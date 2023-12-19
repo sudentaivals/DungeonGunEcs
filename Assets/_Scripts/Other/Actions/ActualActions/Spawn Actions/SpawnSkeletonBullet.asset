@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b47718bbcc8d694fa386f8f71ff1847, type: 3}
+  m_Name: SpawnSkeletonBullet
+  m_EditorClassIdentifier: 
+  _prefabToSpawn: {fileID: 2358134770491426566, guid: fcf50fd5aa827374fa953c00738a2e91, type: 3}
+  _rotationDelta: 20
+  _posType:
+    _underlyingValue: {fileID: 11400000, guid: 9d73216c1f09e00419e8ae150c154af9, type: 2}
+  _rotType:
+    _underlyingValue: {fileID: 11400000, guid: e96be03c4989d254ab09aaff7a25bd5e, type: 2}

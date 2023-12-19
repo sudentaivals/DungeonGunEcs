@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Obstacle
+  - PlayerUnit
+  - PlayerProjectie
+  - Projectile
+  - Camera1
+  - EnemyProjectile
+  - EnemyUnit
+  - Immune
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2873598015
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1251754817
+    locked: 0
+  - name: Floating text
+    uniqueID: 3656777187
+    locked: 0

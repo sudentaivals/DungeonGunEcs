@@ -1,0 +1,9 @@
+using UnityEngine;
+[CreateAssetMenu(menuName = "My Assets/Actions/New game action")]
+public class #SCRIPTNAME# : GameAction
+{
+    public override void Action(int senderEntity, int? takerEntity)
+    {
+        return;
+    }
+}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0349ad46455742f459bfc1b0c53231b3, type: 3}
+  m_Name: SkeletonFSM
+  m_EditorClassIdentifier: 
+  _baseState: {fileID: 11400000, guid: 8d6c7e46cb2914f4c87e0fc175488073, type: 2}
+  _transitions:
+  - SelectedState: {fileID: 11400000, guid: 8d6c7e46cb2914f4c87e0fc175488073, type: 2}
+    Transitions:
+    - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}
+  - SelectedState: {fileID: 11400000, guid: 62f127483bc926249a67e2807ec29df4, type: 2}
+    Transitions:
+    - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}
+  - SelectedState: {fileID: 11400000, guid: d6ef51eab6e67294e9f58580048ae07b, type: 2}
+    Transitions:
+    - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}

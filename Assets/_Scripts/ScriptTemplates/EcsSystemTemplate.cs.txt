@@ -1,0 +1,19 @@
+using Leopotam.EcsLite;
+
+public class #SCRIPTNAME# : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
+{
+    public void Destroy(IEcsSystems systems)
+    {
+        return;
+    }
+
+    public void Init(IEcsSystems systems)
+    {
+        return;
+    }
+
+    public void Run(IEcsSystems systems)
+    {
+        return;
+    }
+}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6494d7122b0cb14c80a15296b3ae759, type: 3}
+  m_Name: Deal damage in range
+  m_EditorClassIdentifier: 
+  _radius: 0.5
+  _conditions:
+  - {fileID: 11400000, guid: 9a27541e444ca9a40add7cf4071380b5, type: 2}
+  - {fileID: 11400000, guid: e6ce417ffbe6e7744b1351474520e925, type: 2}
+  _actions:
+  - {fileID: 11400000, guid: 0a137091e5307824eb3401cc277e5a19, type: 2}
+  - {fileID: 11400000, guid: 0e8d4d8ee9551ff4bae773a3bbd18ea6, type: 2}
+  _offset: {x: 0, y: 0, z: 0}

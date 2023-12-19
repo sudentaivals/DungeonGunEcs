@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e876de3388375489bdeb91dd2baa45, type: 3}
+  m_Name: PlayerRoll
+  m_EditorClassIdentifier: 
+  _actionsOnApply:
+  - {fileID: 11400000, guid: 364753407e254e34194837c3d81614f8, type: 2}
+  - {fileID: 11400000, guid: 71a60b7416eeea64faf5e11daa81ebb5, type: 2}
+  - {fileID: 11400000, guid: cfe0cd4cf769ab548b00229ee41341b5, type: 2}
+  - {fileID: 11400000, guid: 0aa484160c095c54a8c58fd3a461d623, type: 2}
+  - {fileID: 11400000, guid: bc974eb617bd8e7458663a4d63df2616, type: 2}
+  - {fileID: 11400000, guid: a0778fc6e37e92845941c1c231472494, type: 2}
+  _actionsOnRemove:
+  - {fileID: 11400000, guid: b1eb06e5aa2599a48b6d66e8f4944b9a, type: 2}
+  - {fileID: 11400000, guid: 5a0a00363a9eb254bb19dea364fdb70f, type: 2}
+  - {fileID: 11400000, guid: 83818a94f9919eb4993316d3c9a7d953, type: 2}
+  - {fileID: 11400000, guid: b8b299b52ad27d64fb3fe795a5787410, type: 2}
+  _actionsOnUpdate: []
+  _onStacksIncreased: []
+  _isDebuff: 0
+  _numberOfUpdates: 0
+  _duration: 0.7
+  _skillApplyType: 2
+  _name: Roll
+  _id: 2
+  _isStackable: 0
+  _isStackRefreshEffect: 0
+  _maxNumberOfStacks: 0
+  _icon: {fileID: 0}
+  _description: Roll. Immune to projectiles and traps.

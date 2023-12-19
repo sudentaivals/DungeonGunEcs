@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e876de3388375489bdeb91dd2baa45, type: 3}
+  m_Name: RedColor
+  m_EditorClassIdentifier: 
+  _actionsOnApply:
+  - {fileID: 11400000, guid: 64aa5329084f75945807f02f31e7a6e0, type: 2}
+  _actionsOnRemove:
+  - {fileID: 11400000, guid: acf1ab3b1a02d494aafc8dffba8e1fe5, type: 2}
+  _actionsOnUpdate: []
+  _onStacksIncreased: []
+  _isDebuff: 1
+  _numberOfUpdates: 0
+  _duration: 0.05
+  _skillApplyType: 2
+  _name: Red color
+  _id: 1
+  _isStackable: 0
+  _isStackRefreshEffect: 0
+  _maxNumberOfStacks: 0
+  _icon: {fileID: 0}
+  _description: This object took damage recently.

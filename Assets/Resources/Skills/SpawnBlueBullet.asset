@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c93096a05d7679469e1570c18c80a1a, type: 3}
+  m_Name: SpawnBlueBullet
+  m_EditorClassIdentifier: 
+  _baseCooldown: 0.06
+  _affectedByCdReduction: 1
+  _name: Pistol shot
+  _id: 1
+  _castRange: 0
+  _isAutomactic: 1
+  _isUnique: 1
+  _description: 
+  _conditions: []
+  _priority: 0
+  _actionsOnSkillSelect:
+  - {fileID: 11400000, guid: 4938099e141e2ed4d98dfddc6c26417a, type: 2}
+  _actionsOnSkillLearn: []
+  _actionsOnSkillLost: []
+  _actionsOnUse:
+  - {fileID: 11400000, guid: 25870df7310f04f49b4cfda52ddb28c4, type: 2}
+  - {fileID: 11400000, guid: bd129e00e2fc7094bad957b59f920e71, type: 2}
