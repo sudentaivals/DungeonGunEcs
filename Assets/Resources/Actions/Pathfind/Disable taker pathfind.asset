@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a622e83a236d24b96e7e43c84bf8a7, type: 3}
-  m_Name: BetweeNpcAndTargetNoObstacles
+  m_Script: {fileID: 11500000, guid: d8b573b9eb2f41845b66338b3cc8a933, type: 3}
+  m_Name: Disable taker pathfind
   m_EditorClassIdentifier: 
-  _isObstacleExists: 0
-  _obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  _targetIsSender: 0
+  _enable: 0

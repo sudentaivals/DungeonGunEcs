@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f87feadbd01a515439b0387e660fed5d, type: 3}
-  m_Name: SkeletonMove
+  m_Name: SkeletonMoveToNode
   m_EditorClassIdentifier: 
-  State: {fileID: 11400000, guid: 62f127483bc926249a67e2807ec29df4, type: 2}
+  State: {fileID: 11400000, guid: 37e6dbb15b60e8046acffa61a6c2edf2, type: 2}
   Conditions:
   - {fileID: 11400000, guid: fe3e851203853f44e9f3c968b1d20a4e, type: 2}
   - {fileID: 11400000, guid: ffba1f1dfa23c9445baa2fc3bae2f52d, type: 2}
   - {fileID: 11400000, guid: 99562041513d6eb4eaccd0784b724371, type: 2}
+  - {fileID: 11400000, guid: df92b02e18e3bd74084be16f62e2e210, type: 2}

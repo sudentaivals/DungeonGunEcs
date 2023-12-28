@@ -49,4 +49,5 @@ public enum GameplayEventType
     ChangeMovementSpeed,
     RemoveAllStatusEffects,
     SetImmuneStatus,
+    SetPathfindingStatus,
 }

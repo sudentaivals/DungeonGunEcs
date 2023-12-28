@@ -139,6 +139,8 @@ MonoBehaviour:
   value:
     FSM: {fileID: 11400000, guid: 877fee504426e9d49a1b4c9fb94ac3cf, type: 2}
     RunningStateId: 0
+    UpateDelay: 0.1
+    CurrentUpdateDelay: 0
 --- !u!114 &2736353337785437065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
+    IsImmune: 0
     Faction: 0
     UnitType: 1
     EvasionChance: 0
@@ -300,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
+    ReadyToUseSkills: 
     CurrentSelectedNpcSkillId: 0
     IsSkillSelected: 0
 --- !u!114 &2439972718642805443
@@ -345,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     PathCalculationDelay: 2
+    IsPathfindWorks: 0
     CurrentDelay: 0
     NodeRemoveEpsilon: 0.3
 --- !u!114 &9113844648567764943

@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b30d45e158689e5448cf118698fbc41f, type: 3}
-  m_Name: MoveToTarget
+  m_Name: MoveToNodes
   m_EditorClassIdentifier: 
-  _id: 3
+  _id: 7
   _endConditions: []
   _actionsOnStateStart:
   - {fileID: 11400000, guid: 1c09f43d59c2b894aaddfdcd6ca34e32, type: 2}
-  - {fileID: 11400000, guid: 5f2a24de311f9c64da08393ca6ba4538, type: 2}
+  - {fileID: 11400000, guid: 27c95bcbb1d064c498f8128b8bbbea8e, type: 2}
+  - {fileID: 11400000, guid: 71cab9f641cc74848a0492bfb0eeca8c, type: 2}
   _actionsOnStateEnd:
   - {fileID: 11400000, guid: e27a61902bac9224baf6afa1a3be2cbc, type: 2}
   - {fileID: 11400000, guid: b8a7fd0e9df7aaa4c8201b5e120fdc5b, type: 2}
+  - {fileID: 11400000, guid: ff789450794fd4243bb3ee2b569309b1, type: 2}
   _actionsOnStateUpdate: []

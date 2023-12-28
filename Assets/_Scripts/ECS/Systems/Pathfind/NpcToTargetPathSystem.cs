@@ -1,7 +1,10 @@
+using System;
+using System.Diagnostics;
 using CustomAstar;
 using Leopotam.EcsLite;
 using UnityEngine;
-public class NpcToTargetPathSystem : IEcsInitSystem, IEcsRunSystem
+
+public class NpcToTargetPathSystem : IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
 {
     private EcsFilter _filter;
     private EcsPool<PathComponent> _pathPool;
@@ -33,6 +36,22 @@ public class NpcToTargetPathSystem : IEcsInitSystem, IEcsRunSystem
         _npcMovementPool = world.GetPool<NpcMovement>();
         //var size = GridManager.Instance.GridSize;
         _astar = new(10000);
+        EcsEventBus.Subscribe(GameplayEventType.SetPathfindingStatus, SetPathfindingStatus);
+    }
+
+    public void Destroy(IEcsSystems systems)
+    {
+        EcsEventBus.Unsubscribe(GameplayEventType.SetPathfindingStatus, SetPathfindingStatus);
+    }
+
+
+    private void SetPathfindingStatus(int senderEntity, EventArgs args)
+    {
+        if(!_pathPool.Has(senderEntity)) return;
+        var newArgs = args as ChangePathfindingStatusEventArgs;
+        ref var pathfindComponent = ref _pathPool.Get(senderEntity);
+        pathfindComponent.IsPathfindWorks = newArgs.IsPathfindingActive;
+        pathfindComponent.CurrentDelay = 0;
     }
 
     public void Run(IEcsSystems systems)
@@ -49,6 +68,7 @@ public class NpcToTargetPathSystem : IEcsInitSystem, IEcsRunSystem
             if(!targetComp.IsTargetFound) continue;
 
             ref var pathComp = ref _pathPool.Get(entity);
+            if(!pathComp.IsPathfindWorks) continue;
             pathComp.CurrentDelay -= Time.fixedDeltaTime;
             if(pathComp.CurrentDelay > 0) continue;
 
@@ -63,4 +83,5 @@ public class NpcToTargetPathSystem : IEcsInitSystem, IEcsRunSystem
             _currentPathsCalculations++;
         }
     }
+
 }

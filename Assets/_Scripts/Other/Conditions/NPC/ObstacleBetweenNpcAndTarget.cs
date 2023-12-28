@@ -1,3 +1,4 @@
+using AYellowpaper;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "My Assets/Conditions/NPC/Obstacle between sender and target")]
@@ -5,19 +6,10 @@ public class ObstacleBetweenNpcAndTarget : BaseGameCondition
 {
     [SerializeField] bool _isObstacleExists;
     [SerializeField] LayerMask _obstacleLayer;
-
+    [SerializeField] InterfaceReference<IRaycastType, ScriptableObject> _raycastType;
+    [SerializeField] float _raycastShapeData1;
+    [SerializeField] float _raycastShapeData2;
     private RaycastHit2D[] _obstacleColliders = new RaycastHit2D[1];
-
-    private ContactFilter2D _filter;
-
-    private void Awake()
-    {
-        _filter.SetLayerMask(_obstacleLayer);
-        _filter.useTriggers = false;
-        _filter.useDepth = false;
-        _filter.useLayerMask = true;
-        _filter.useNormalAngle = false;
-    }
     public override bool CheckCondition(int senderEntity, int? takerEntity)
     {
         var npcTargetPool = EcsStart.World.GetPool<NpcTargetComponent>();
@@ -28,7 +20,8 @@ public class ObstacleBetweenNpcAndTarget : BaseGameCondition
         var origin = npcTransform.Transform.position;
         var direction = (targetTransform.Transform.position - origin).normalized;
         var magnitude = (targetTransform.Transform.position - origin).magnitude;
-        int raycast = Physics2D.RaycastNonAlloc(origin, direction, _obstacleColliders, magnitude, _obstacleLayer);
+        //int raycast = Physics2D.RaycastNonAlloc(origin, direction, _obstacleColliders, magnitude, _obstacleLayer);
+        int raycast = _raycastType.Value.GetRaycastResults(_obstacleLayer, origin, direction, magnitude, _raycastShapeData1, _raycastShapeData2);
         //int raycast = Physics2D.Raycast(origin, direction, _filter, _obstacleColliders, magnitude);
         //var raycast = Physics2D.Raycast(origin, direction, magnitude, _obstacleLayer);
         if(raycast == 0)

@@ -1,6 +1,5 @@
 using Leopotam.EcsLite;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -12,7 +11,9 @@ public class NpcBehaviorSystem : IEcsRunSystem, IEcsInitSystem
     public void Init(IEcsSystems systems)
     {
         var world = systems.GetWorld();
-        _filter = world.Filter<NpcStateComponent>().Exc<PooledObjectTag>().End();
+        _filter = world.Filter<NpcStateComponent>()
+                       .Exc<PooledObjectTag>()
+                       .End();
         _npsStatePool = world.GetPool<NpcStateComponent>();
     }
 
@@ -21,9 +22,19 @@ public class NpcBehaviorSystem : IEcsRunSystem, IEcsInitSystem
         foreach (int entity in _filter)
         {
             //ref var npcState = ref _npsStatePool.Get(entity);
-            ChooseState(entity);
+            if(CheckUpdateTime(entity))
+            {
+                ChooseState(entity);
+            }
             UpdateState(entity);
         }
+    }
+
+    private bool CheckUpdateTime(int entity)
+    {
+        ref var npcState = ref _npsStatePool.Get(entity);
+        npcState.CurrentUpdateDelay -= Time.deltaTime;
+        return npcState.CurrentUpdateDelay <= 0;
     }
 
     private void ChooseState(int entity)
@@ -64,6 +75,7 @@ public class NpcBehaviorSystem : IEcsRunSystem, IEcsInitSystem
         //new state enter actions
         npcState.RunningStateId = newStateId;
         npcState.FSM.Branches.First(a => a.SelectedState.Id == newStateId).SelectedState.PerformActionsOnStart(entity);
+        npcState.CurrentUpdateDelay = npcState.UpateDelay;
         //Debug.Log(npcState.RunningStateId);
         //newState.PerformActionsOnStart(entity);
     }

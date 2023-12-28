@@ -259,3 +259,8 @@ public class ChangeImmuneStatusEventArgs : EventArgs
     public bool IsImmune {get;set;}
 }
 
+public class ChangePathfindingStatusEventArgs : EventArgs
+{
+    public bool IsPathfindingActive {get;set;}
+}
+

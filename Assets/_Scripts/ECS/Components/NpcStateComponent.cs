@@ -8,4 +8,6 @@ public struct NpcStateComponent
 {
     public FSM FSM;
     public int RunningStateId;
+    public float UpateDelay;
+    public float CurrentUpdateDelay;
 }

@@ -17,12 +17,20 @@ MonoBehaviour:
   - SelectedState: {fileID: 11400000, guid: 8d6c7e46cb2914f4c87e0fc175488073, type: 2}
     Transitions:
     - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 4d4278fadd3f8ac4f88c23205a88edc6, type: 2}
     - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}
   - SelectedState: {fileID: 11400000, guid: 62f127483bc926249a67e2807ec29df4, type: 2}
     Transitions:
     - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 4d4278fadd3f8ac4f88c23205a88edc6, type: 2}
     - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}
   - SelectedState: {fileID: 11400000, guid: d6ef51eab6e67294e9f58580048ae07b, type: 2}
     Transitions:
     - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 4d4278fadd3f8ac4f88c23205a88edc6, type: 2}
     - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}
+  - SelectedState: {fileID: 11400000, guid: 37e6dbb15b60e8046acffa61a6c2edf2, type: 2}
+    Transitions:
+    - {fileID: 11400000, guid: b1e8fa62017ca624986620593ceec8f2, type: 2}
+    - {fileID: 11400000, guid: 1f4af32094d04da499d87d26f307cd4b, type: 2}
+    - {fileID: 11400000, guid: 4d4278fadd3f8ac4f88c23205a88edc6, type: 2}

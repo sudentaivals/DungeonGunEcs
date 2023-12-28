@@ -3302,7 +3302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xRange: {x: -5, y: 5}
   _yRange: {x: -5, y: 5}
-  _numberOfSpawns: 400
+  _numberOfSpawns: 25
   _objectToSpawn: {fileID: 2736353337785437072, guid: c1ce00b8a102b8a4e947ff18e0c78b9a, type: 3}
 --- !u!4 &1359625756
 Transform:
