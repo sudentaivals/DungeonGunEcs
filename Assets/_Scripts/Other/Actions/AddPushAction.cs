@@ -7,6 +7,8 @@ public class AddPushAction : GameAction
     [SerializeField] InterfaceReference<IRotationType, ScriptableObject> _rotationType;
     [SerializeField] bool _isReversed;
     [SerializeField] bool _targetIsSender;
+
+    [SerializeField] bool _isImpulse;
     public override void Action(int senderEntity, int? takerEntity)
     {
         if (!_targetIsSender && !takerEntity.HasValue) return;
@@ -16,9 +18,11 @@ public class AddPushAction : GameAction
         (Mathf.Cos(rotation.eulerAngles.z * Mathf.Deg2Rad), 
         Mathf.Sin(rotation.eulerAngles.z * Mathf.Deg2Rad));
         int entity = _targetIsSender ? senderEntity : takerEntity.Value;
+        
         var pushArgs = EventArgsObjectPool.GetArgs<AddPushEventArgs>();
         pushArgs.PushPower = _pushPower;
         pushArgs.Direction = pushDirection;
+        pushArgs.IsImpulse = _isImpulse;
         EcsEventBus.Publish(GameplayEventType.AddPush, entity, pushArgs);
 
 

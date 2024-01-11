@@ -11,7 +11,7 @@ public class FlipSystem : IEcsRunSystem, IEcsInitSystem
     {
         var world = systems.GetWorld();
         _filter = world.Filter<MovementStatsComponent>()
-                       .Exc<SimpleMovementTag>()
+                       .Exc<FlipIgnoreTag>()
                        .Exc<PooledObjectTag>()
                        .End();
         _movementStatsPool = world.GetPool<MovementStatsComponent>();

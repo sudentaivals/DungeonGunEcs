@@ -35,9 +35,10 @@ public class CombineMovementSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroyS
         ref var pushStats = ref _pushStatsPool.Get(entity);
         var newPush = pushArgs.Direction * pushArgs.PushPower * (1f - pushStats.PushResistance);
         ref var physicalBodyComponent = ref _physicalBodyPool.Get(entity);
+        float timeMod = pushArgs.IsImpulse ? 1f : Time.fixedDeltaTime;
         pushStats.Push = new Vector2(
-                                 pushStats.Push.x + (Time.fixedDeltaTime * newPush.x) / physicalBodyComponent.RigidBody.mass,
-                                 pushStats.Push.y + (Time.fixedDeltaTime * newPush.y) / physicalBodyComponent.RigidBody.mass);
+                                 pushStats.Push.x + timeMod * newPush.x / physicalBodyComponent.RigidBody.mass,
+                                 pushStats.Push.y + timeMod * newPush.y / physicalBodyComponent.RigidBody.mass);
     }
 
     private Vector2 GetCurrentPush(int entity)

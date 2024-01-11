@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1aeb6fec2d24b48a7ba04a15f06f98, type: 3}
   m_Name: Blue bullet push
   m_EditorClassIdentifier: 
-  _pushPower: 30
+  _pushPower: 3
   _rotationType:
     _underlyingValue: {fileID: 11400000, guid: 23aefaeea8c32d94ea444338a3dca183, type: 2}
   _isReversed: 0
   _targetIsSender: 0
+  _isImpulse: 1

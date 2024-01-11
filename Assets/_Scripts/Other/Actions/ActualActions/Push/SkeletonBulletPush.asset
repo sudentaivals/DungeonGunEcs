@@ -17,3 +17,4 @@ MonoBehaviour:
     _underlyingValue: {fileID: 11400000, guid: 23aefaeea8c32d94ea444338a3dca183, type: 2}
   _isReversed: 0
   _targetIsSender: 0
+  _isImpulse: 1

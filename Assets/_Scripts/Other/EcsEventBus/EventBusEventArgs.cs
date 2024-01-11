@@ -222,6 +222,8 @@ public class AddPushEventArgs : EventArgs
 {
     public float PushPower {get; set;}
     public Vector2 Direction {get; set;}
+
+    public bool IsImpulse;
 }
 
 public class AddSenderToCinemachineTargetGroupEventArgs : EventArgs

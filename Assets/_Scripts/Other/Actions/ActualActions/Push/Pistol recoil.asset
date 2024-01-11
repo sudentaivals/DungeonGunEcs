@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1aeb6fec2d24b48a7ba04a15f06f98, type: 3}
   m_Name: Pistol recoil
   m_EditorClassIdentifier: 
-  _pushPower: 10
+  _pushPower: 0.5
   _rotationType:
     _underlyingValue: {fileID: 11400000, guid: dfe8c169ccd766f479b410b9a8c8f0ac, type: 2}
   _isReversed: 1
   _targetIsSender: 1
+  _isImpulse: 1

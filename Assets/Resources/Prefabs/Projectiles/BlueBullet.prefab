@@ -20,11 +20,11 @@ GameObject:
   - component: {fileID: 2249601799035063438}
   - component: {fileID: 5539086840128397284}
   - component: {fileID: 702370740998067746}
-  - component: {fileID: 7883433937684821785}
   - component: {fileID: 111918871064009720}
   - component: {fileID: 6364407548316760234}
   - component: {fileID: 2669631316232938359}
   - component: {fileID: -2925649283395184895}
+  - component: {fileID: -2759913673168998672}
   m_Layer: 8
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -248,18 +248,6 @@ MonoBehaviour:
       DamageBonusFlat: 0
       SpeedBonusPercent: 0
       CooldownReduction: 0
---- !u!114 &7883433937684821785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5240602149356448862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68f8252f96bc8346a34ffd8bb29f529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &111918871064009720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 5240602149356448862}
-    Prefab: {fileID: 5240602149356448862}
     ActionsOnReturnToPool:
     - {fileID: 11400000, guid: db1fbb6a98b0664419e8ffa982abf9c1, type: 2}
 --- !u!114 &2669631316232938359
@@ -331,6 +318,18 @@ MonoBehaviour:
     Acceleration: 6
     Deceleration: 6
     IsMovementAvailable: 1
+--- !u!114 &-2759913673168998672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5240602149356448862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb49f59ad7d5444f88b15c7501b4c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5240602151147163569
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,12 +39,13 @@ public class PushRemoveSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
         {
             ref var pushStats = ref _pushStatsPool.Get(entity);
             ref var physicalBody = ref _physicalBodyPool.Get(entity);
+            float gravityVector = Mathf.Abs(Physics2D.gravity.y);
             var newPushX = pushStats.Push.x >= 0
-                ? Mathf.Clamp(pushStats.Push.x + (-Physics2D.gravity.magnitude * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, 0, float.MaxValue)
-                : Mathf.Clamp(pushStats.Push.x + (Physics2D.gravity.magnitude * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, float.MinValue, 0);
+                ? Mathf.Clamp(pushStats.Push.x + (-gravityVector * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, 0, float.MaxValue)
+                : Mathf.Clamp(pushStats.Push.x + (gravityVector * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, float.MinValue, 0);
             var newPushY = pushStats.Push.y >= 0
-                ? Mathf.Clamp(pushStats.Push.y + (-Physics2D.gravity.magnitude * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, 0, float.MaxValue)
-                : Mathf.Clamp(pushStats.Push.y + (Physics2D.gravity.magnitude * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, float.MinValue, 0);
+                ? Mathf.Clamp(pushStats.Push.y + (-gravityVector * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, 0, float.MaxValue)
+                : Mathf.Clamp(pushStats.Push.y + (gravityVector * Time.fixedDeltaTime) / physicalBody.RigidBody.mass * pushStats.Friction, float.MinValue, 0);
             pushStats.Push = new Vector2(newPushX, newPushY);
         }
     }
