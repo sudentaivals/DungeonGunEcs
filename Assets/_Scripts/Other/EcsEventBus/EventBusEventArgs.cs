@@ -106,6 +106,10 @@ public class AddStatusEffectEventArgs : EventArgs
 {
     public StatusEffectShell EffectShell { get; set;}
     public int TargetEntity { get; set;}
+
+    public float NewDuration;
+
+    public bool OverrideDuration;
 }
 
 public class DealDamageSnapshot : EventArgs
@@ -199,6 +203,8 @@ public class PlayAnimationEventArgs : EventArgs
     public float TargetAnimationSpeed {get; set;}
 
     public bool ChangeAnimationSpeed {get;set;}
+
+    public bool IgnoreExitActions {get;set;}
 
 }
 

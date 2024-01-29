@@ -77,7 +77,8 @@ public class StatusEffectSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
             sennder = senderEntity;
         }
         //check for skill apply type
-        var statusEffect = new StatusEffect(statusEffectsArgs.EffectShell, statusEffectsArgs.TargetEntity, sennder);
+        var statusEffect = new StatusEffect(statusEffectsArgs.EffectShell, statusEffectsArgs.TargetEntity, sennder, 
+        statusEffectsArgs.OverrideDuration, statusEffectsArgs.NewDuration);
         switch (statusEffectsArgs.EffectShell.SkillApplyType)
         {
             case SkillApplyType.UniqueForAll:

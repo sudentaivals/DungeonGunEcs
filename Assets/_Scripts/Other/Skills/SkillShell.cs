@@ -48,6 +48,7 @@ public class SkillShell : ScriptableObject
 
     public bool ConditionsAreValid(int senderEntity)
     {
+        if(_conditions == null) return true;
         return _conditions.All(condition => condition.CheckCondition(senderEntity, null));
     }
 

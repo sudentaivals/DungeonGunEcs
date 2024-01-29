@@ -37,6 +37,7 @@ public class EcsStart : MonoBehaviour
             .Add(new StatusEffectSystem())
             .Add(new NpcSkillSelectionSystem())
             .Add(new MaterialSystem())
+            .Add(new NpcBehaviorSystem())
             .Init();
         _fixedUpdateSystems
             .Add(new NpcToTargetPathSystem())
@@ -49,7 +50,6 @@ public class EcsStart : MonoBehaviour
             .Add(new CombineMovementSystem()) //velocity = movement + push
             .Add(new PushRemoveSystem()) //remove push using "gravity"
             .Add(new TargetSystem())
-            .Add(new NpcBehaviorSystem())
             .Init();
         _lateUpdateSystems
             .Add(new UiHealthbarSystem())

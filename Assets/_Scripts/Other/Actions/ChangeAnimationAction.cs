@@ -7,6 +7,7 @@ public class ChangeAnimationAction : GameAction
     [SerializeField] float _lockTime;
     [SerializeField] float _targetAnimSpeed;
     [SerializeField] bool _changingSpeed;
+    [SerializeField] bool _ignoreExitActions;
     public override void Action(int senderEntity, int? takerEntity)
     {
         var animArgs = EventArgsObjectPool.GetArgs<PlayAnimationEventArgs>();
@@ -14,6 +15,7 @@ public class ChangeAnimationAction : GameAction
         animArgs.LockTime = _lockTime;
         animArgs.TargetAnimationSpeed = _targetAnimSpeed;
         animArgs.ChangeAnimationSpeed = _changingSpeed;
+        animArgs.IgnoreExitActions = _ignoreExitActions;
         EcsEventBus.Publish(GameplayEventType.ChangeAnimation, senderEntity, animArgs);
     }
 }

@@ -33,7 +33,7 @@ public class StatusEffect
 
     public bool IsOver => _duration <= 0;
 
-    public StatusEffect(StatusEffectShell shell, int takerEntity, int senderEntity)
+    public StatusEffect(StatusEffectShell shell, int takerEntity, int senderEntity, bool overrideDuration = false, float newDuration = 0f)
     {
         _hostEntity = takerEntity;
         _senderEntity = senderEntity;
@@ -50,7 +50,7 @@ public class StatusEffect
         _description = shell.Description;
         //update timers
         _numberOfUpdates = shell.NumberOfUpdates;
-        _duration = shell.Duration;
+        _duration = overrideDuration ? newDuration : shell.Duration;
         _actionsOnApply = shell.ActionsOnApply;
         _actionsOnRemove = shell.ActionsOnRemove;
         _actionsOnUpdate = shell.ActionsOnUpdate;

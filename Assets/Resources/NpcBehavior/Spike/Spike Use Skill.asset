@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30d45e158689e5448cf118698fbc41f, type: 3}
+  m_Name: Spike Use Skill
+  m_EditorClassIdentifier: 
+  _id: 8
+  _endConditions: []
+  _actionsOnStateStart:
+  - {fileID: 11400000, guid: ee899f2849a95af4f95b05df333c4e9d, type: 2}
+  _actionsOnStateEnd: []
+  _actionsOnStateUpdate: []
