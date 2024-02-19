@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 2669631316232938359}
   - component: {fileID: -2925649283395184895}
   - component: {fileID: -2759913673168998672}
+  - component: {fileID: 1395127307519512676}
   m_Layer: 8
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
     MaxFlyDistance: 15
     CurrentFlyDistance: 0
     OldPosition: {x: 0, y: 0, z: 0}
-    ActionsOnReachMaxFlyDistance: {fileID: 11400000, guid: d45df52bc23567a4f97a3071af0dc53d, type: 2}
+    ActionsOnReachMaxFlyDistance: {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
 --- !u!114 &5240602149356448858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,9 +158,6 @@ MonoBehaviour:
     IsImmune: 0
     Faction: 0
     UnitType: 0
-    EvasionChance: 0
-    DamageReductionPercent: 0
-    DamageReductionFlat: 0
     DamageBonusPercent: 0
     DamageBonusFlat: 0
     SpeedBonusPercent: 0
@@ -189,12 +187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    OnDamageTake: []
     OnDamageDeal: []
     OnSkillUse: []
-    OnDeath: []
-    OnEvasion: []
     OnStart: []
+    OnDestroy: []
     StartEventsInvoked: 0
 --- !u!114 &2249601799035063438
 MonoBehaviour:
@@ -241,9 +237,6 @@ MonoBehaviour:
       IsImmune: 0
       Faction: 0
       UnitType: 0
-      EvasionChance: 0
-      DamageReductionPercent: 0
-      DamageReductionFlat: 0
       DamageBonusPercent: 0
       DamageBonusFlat: 0
       SpeedBonusPercent: 0
@@ -280,6 +273,10 @@ MonoBehaviour:
     GameObjectReference: {fileID: 5240602149356448862}
     ActionsOnReturnToPool:
     - {fileID: 11400000, guid: db1fbb6a98b0664419e8ffa982abf9c1, type: 2}
+    ComponentsResetList:
+    - {fileID: 11400000, guid: 635f999f509ba734185b5bab3642eb07, type: 2}
+    - {fileID: 11400000, guid: 83cc7c6a7570b2047be3939307838dde, type: 2}
+    - {fileID: 11400000, guid: 79aba9b9b62c18045a601f93eba08b38, type: 2}
 --- !u!114 &2669631316232938359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,10 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aacaae9ddc84f04e89e9e8eb7b47fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentsResetList:
-  - {fileID: 11400000, guid: 635f999f509ba734185b5bab3642eb07, type: 2}
-  - {fileID: 11400000, guid: 83cc7c6a7570b2047be3939307838dde, type: 2}
-  - {fileID: 11400000, guid: 79aba9b9b62c18045a601f93eba08b38, type: 2}
+  _poolId: 200
 --- !u!114 &-2925649283395184895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +324,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb49f59ad7d5444f88b15c7501b4c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1395127307519512676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5240602149356448862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5344a9d1e58384f892cb28a3997f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    GameObjectReference: {fileID: 5240602149356448862}
+    Id: 200
+    Name: Revolver projectile
+    Description: Just revolver bullet
 --- !u!1 &5240602151147163569
 GameObject:
   m_ObjectHideFlags: 0

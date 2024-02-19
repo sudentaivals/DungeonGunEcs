@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3828e8f134b1fca4fa68b81491ae080a, type: 3}
   m_Name: TakeSkeletonBulletFromPool
   m_EditorClassIdentifier: 
-  _poolId: 2
   _prefab: {fileID: 2358134770491426566, guid: fcf50fd5aa827374fa953c00738a2e91, type: 3}
   _posType:
     _underlyingValue: {fileID: 11400000, guid: 9d73216c1f09e00419e8ae150c154af9, type: 2}
   _rotType:
     _underlyingValue: {fileID: 11400000, guid: e96be03c4989d254ab09aaff7a25bd5e, type: 2}
+  _statsSetters:
+  - _underlyingValue: {fileID: 11400000, guid: ebd0f1c56c609d04c94fc27a79d856ad, type: 2}
   _rotationDelta: 20

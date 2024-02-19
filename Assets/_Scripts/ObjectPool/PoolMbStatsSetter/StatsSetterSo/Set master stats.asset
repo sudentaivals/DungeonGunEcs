@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be1468b463616a43bc9022c93b3ae40, type: 3}
-  m_Name: Add purple particle to object pool
+  m_Script: {fileID: 11500000, guid: b9c166ac49c003b468bee7f05d2c1339, type: 3}
+  m_Name: Set master stats
   m_EditorClassIdentifier: 
-  _poolId: 4

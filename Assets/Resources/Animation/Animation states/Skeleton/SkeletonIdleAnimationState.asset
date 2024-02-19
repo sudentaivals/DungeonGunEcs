@@ -18,3 +18,4 @@ MonoBehaviour:
   _actionOnAnimationEnd: {fileID: 0}
   _actionOnAnimationStart: {fileID: 0}
   _priority: 100
+  _isRepeatable: 1

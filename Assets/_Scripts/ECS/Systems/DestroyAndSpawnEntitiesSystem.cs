@@ -49,7 +49,7 @@ public class DestroyAndSpawnEntitiesSystem : IEcsInitSystem, IEcsDestroySystem, 
     }
 
     public void Run(IEcsSystems systems)
-    {                
+    {
         //spawn new entities
         while (_spawnQueue.TryDequeue(out var result))
         {
@@ -63,7 +63,7 @@ public class DestroyAndSpawnEntitiesSystem : IEcsInitSystem, IEcsDestroySystem, 
         while (_destroyQueue.TryDequeue(out var result))
         {
             ref var entityEvents = ref _eventsPool.Get(result.Entity);
-            foreach (var deathEvent in entityEvents.OnDeath)
+            foreach (var deathEvent in entityEvents.OnDestroy)
             {
                 deathEvent?.Action(result.Entity, null);
             }

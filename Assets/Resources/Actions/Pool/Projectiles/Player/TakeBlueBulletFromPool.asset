@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3828e8f134b1fca4fa68b81491ae080a, type: 3}
   m_Name: TakeBlueBulletFromPool
   m_EditorClassIdentifier: 
-  _poolId: 1
   _prefab: {fileID: 5240602149356448862, guid: 3b2a29164b5ba9f4db1db36caf0e004a, type: 3}
   _posType:
     _underlyingValue: {fileID: 11400000, guid: 9d73216c1f09e00419e8ae150c154af9, type: 2}
   _rotType:
     _underlyingValue: {fileID: 11400000, guid: a0ea5bd6feeab5f4e99d9fce979140b4, type: 2}
+  _statsSetters:
+  - _underlyingValue: {fileID: 11400000, guid: ebd0f1c56c609d04c94fc27a79d856ad, type: 2}
   _rotationDelta: 15

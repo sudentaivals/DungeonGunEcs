@@ -17,17 +17,15 @@ public struct GlobalStatsComponent
     public int BaseHealth;
     */
     //damage reduction MOVE TO HEALTH COMPONENT
-    public float GetClampedEvasion => Mathf.Clamp(EvasionChance, 0f, 0.95f);
-    public float EvasionChance;
-    public float DamageReductionPercent;
-    public int DamageReductionFlat;
+    //public float GetClampedEvasion => Mathf.Clamp(EvasionChance, 0f, 0.95f);
+    //public float EvasionChance;
+    //public float DamageReductionPercent;
+    //public int DamageReductionFlat;
 
 
     //damage bonus
     public float DamageBonusPercent;
     public int DamageBonusFlat;
-    public float SpeedBonusPercent;
-
     //movement
     //public Vector2 Direction;
     //public Vector2 Movement;

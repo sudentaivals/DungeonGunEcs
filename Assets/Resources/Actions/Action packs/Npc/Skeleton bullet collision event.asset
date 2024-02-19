@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f1bfa90732bd44d96732e2fd6d9b70, type: 3}
   m_Name: Skeleton bullet collision event
   m_EditorClassIdentifier: 
-  _conditions: []
+  _condition: {fileID: 0}
   _actions:
   - {fileID: 11400000, guid: 0e8d4d8ee9551ff4bae773a3bbd18ea6, type: 2}
   - {fileID: 11400000, guid: 0ffd696650f2e2141910b802bf4fd7ec, type: 2}
   - {fileID: 11400000, guid: 5ca4f25b401571543857dedf648e206b, type: 2}
-  - {fileID: 11400000, guid: a2ab69b4398c9c94f960e817b5ddb716, type: 2}
+  - {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}

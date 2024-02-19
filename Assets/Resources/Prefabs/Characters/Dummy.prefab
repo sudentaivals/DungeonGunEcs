@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4087385615908503603}
   - component: {fileID: 3379963689431958039}
   - component: {fileID: 5899144878415670358}
+  - component: {fileID: -1293527845434984894}
   m_Layer: 12
   m_Name: Dummy
   m_TagString: Untagged
@@ -154,11 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
+    IsImmune: 0
     Faction: 0
     UnitType: 1
-    EvasionChance: 0
-    DamageReductionPercent: 0
-    DamageReductionFlat: 0
     DamageBonusPercent: 0
     DamageBonusFlat: 0
     SpeedBonusPercent: 0
@@ -190,12 +189,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    OnDamageTake: []
     OnDamageDeal: []
     OnSkillUse: []
-    OnDeath: []
-    OnEvasion: []
     OnStart: []
+    OnDestroy: []
     StartEventsInvoked: 0
 --- !u!114 &3379963689931770593
 MonoBehaviour:
@@ -302,6 +299,12 @@ MonoBehaviour:
     CurrentHealth: 100
     MaxHealthBonus: 0
     BaseHealth: 100
+    EvasionChance: 0
+    DamageReductionPercent: 0
+    DamageReductionFlat: 0
+    OnDeath: []
+    OnEvasion: []
+    OnDamageTake: []
 --- !u!114 &5899144878415670358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,5 +319,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     Push: {x: 0, y: 0}
-    PushResistance: 0
+    PushResistance: 1
     Friction: 1
+--- !u!114 &-1293527845434984894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379963689931770597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5344a9d1e58384f892cb28a3997f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    GameObjectReference: {fileID: 3379963689931770597}
+    Id: 101
+    Name: Dummy
+    Description: Training dummy. Testing only.

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9029727933952437996}
   - component: {fileID: 7805912354157632735}
   - component: {fileID: 5669186418040271409}
+  - component: {fileID: -6891512873843487545}
   m_Layer: 0
   m_Name: PurpleBulletPArticle
   m_TagString: Untagged
@@ -4900,7 +4901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aacaae9ddc84f04e89e9e8eb7b47fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentsResetList: []
+  _poolId: 901
 --- !u!114 &7805912354157632735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4915,8 +4916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 199052256839884750}
-    Prefab: {fileID: 199052256839884750}
     ActionsOnReturnToPool: []
+    ComponentsResetList: []
 --- !u!114 &5669186418040271409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4929,4 +4930,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef1c4834cc01ed4b9240ec70bfcfc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionOnParticleStopped: {fileID: 11400000, guid: db8e6b73a95593f4da4266ab993a117b, type: 2}
+  _actionOnParticleStopped: {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
+--- !u!114 &-6891512873843487545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199052256839884750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5344a9d1e58384f892cb28a3997f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    GameObjectReference: {fileID: 199052256839884750}
+    Id: 901
+    Name: Purple particle
+    Description: Skeleton bullet particle

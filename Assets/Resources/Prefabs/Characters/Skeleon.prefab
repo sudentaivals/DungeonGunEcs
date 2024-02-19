@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 7138164439939954311}
   - component: {fileID: 8223203322267201071}
   - component: {fileID: 6233978713343120763}
+  - component: {fileID: 1852014066565803537}
   m_Layer: 12
   m_Name: Skeleon
   m_TagString: Untagged
@@ -157,12 +158,8 @@ MonoBehaviour:
     IsImmune: 0
     Faction: 0
     UnitType: 1
-    EvasionChance: 0
-    DamageReductionPercent: 0
-    DamageReductionFlat: 0
     DamageBonusPercent: 0
     DamageBonusFlat: 0
-    SpeedBonusPercent: 0
     CooldownReduction: 0
 --- !u!114 &2736353337785437064
 MonoBehaviour:
@@ -177,9 +174,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    CurrentHealth: 100
+    CurrentHealth: 20
     MaxHealthBonus: 0
-    BaseHealth: 100
+    BaseHealth: 20
+    EvasionChance: 0
+    DamageReductionPercent: 0
+    DamageReductionFlat: 0
+    OnDeath:
+    - {fileID: 11400000, guid: 018cc7c4e4e03af4f9fb348b566c2575, type: 2}
+    - {fileID: 11400000, guid: 61f713ca131954f44bfc01801dcfdcdb, type: 2}
+    OnEvasion: []
+    OnDamageTake: []
 --- !u!114 &2736353337785437070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,12 +226,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    OnDamageTake: []
     OnDamageDeal: []
     OnSkillUse: []
-    OnDeath: []
-    OnEvasion: []
     OnStart: []
+    OnDestroy: []
     StartEventsInvoked: 0
 --- !u!114 &2736353337785437069
 MonoBehaviour:
@@ -408,6 +411,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9b46aa783aca1e64b844d42110fdd771, type: 2}
     - {fileID: 11400000, guid: b77fff11e7bbbf34093d556eadcb8db0, type: 2}
     - {fileID: 11400000, guid: ff6886aadb254db4abe24ed90b4ce32c, type: 2}
+    LockedState: 0
+    OldStateId: 0
+    NewStateId: 0
+    ChangeSpeed: 0
+    DesireAnimationSpeed: 0
+    TriggerExitActions: 0
     LockedTill: 0
     CurrentStateId: 0
 --- !u!114 &6233978713343120763
@@ -424,6 +433,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Animator: {fileID: 2736353337785437059}
   _ActionOnDisable: 0
+--- !u!114 &1852014066565803537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736353337785437072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5344a9d1e58384f892cb28a3997f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    GameObjectReference: {fileID: 2736353337785437072}
+    Id: 100
+    Name: Skeleton
+    Description: Base enemy. Shoots purple spheres.
 --- !u!1 &2736353338062552166
 GameObject:
   m_ObjectHideFlags: 0

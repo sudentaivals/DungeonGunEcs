@@ -1,6 +1,5 @@
 using Leopotam.EcsLite;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,6 +44,7 @@ public class DealDamageSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
             ref var takerEvents = ref _eventsPool.Get(result.TakerEntity);
             ref var takerStats = ref _statsPool.Get(result.TakerEntity);
             ref var takerHealth = ref _healthPool.Get(result.TakerEntity);
+            if(!takerHealth.IsAlive) continue;
             GlobalStatsComponent senderStats = new GlobalStatsComponent();
             if(result.SenderStats == null)
             {
@@ -56,18 +56,23 @@ public class DealDamageSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
             }
             //evasion
             var randomNumber = UnityEngine.Random.Range(0f, 1f);
-            if(randomNumber < takerStats.GetClampedEvasion)
+            if(randomNumber < takerHealth.GetClampedEvasion)
             {
                 //takerEvents.OnEvasion?.Invoke();
                 EcsEventBus.Publish(GameplayEventType.CreateFloatingText, result.TakerEntity, new CreateFloatingTextEventArgs("Evade", Color.white, new Vector2(1, -0.5f)));
+                takerHealth.OnEvasion.ForEach(evasionAction => evasionAction.Action(result.TakerEntity, result.SenderEntity));
                 continue;
             }
             //hit - calculate damage
             var damage = (float)(result.Damage + senderStats.DamageBonusFlat) * (1f + senderStats.DamageBonusPercent);
-            var damageAfterReduction = ((int)damage - takerStats.DamageReductionFlat) * (1 - takerStats.DamageReductionPercent);
+            var damageAfterReduction = ((int)damage - takerHealth.DamageReductionFlat) * (1 - takerHealth.DamageReductionPercent);
             var clampedDamage = Mathf.RoundToInt(Mathf.Clamp(damageAfterReduction, 0f, float.MaxValue));
             EcsEventBus.Publish(GameplayEventType.CreateFloatingText, result.TakerEntity, new CreateFloatingTextEventArgs($"-{clampedDamage}", Color.cyan, new Vector2(1, 0.5f)));
             takerHealth.CurrentHealth -= Mathf.RoundToInt(clampedDamage);
+            takerHealth.OnDamageTake.ForEach(onDamageTakeEvent => onDamageTakeEvent.Action(result.TakerEntity, result.SenderEntity));
+            if(takerHealth.IsAlive) continue;
+            takerHealth.OnDeath.ForEach(onDeathEvent => onDeathEvent.Action(result.TakerEntity, result.SenderEntity));
+
         }
     }
 }

@@ -24,7 +24,7 @@ public class SummonedObjectSystem : IEcsRunSystem, IEcsInitSystem
                 summonedComp.MasterStats = _statsPool.Get(summoned.MasterEntity);
                 summonedStats.DamageBonusFlat = summonedComp.MasterStats.DamageBonusFlat;
                 summonedStats.DamageBonusPercent = summonedComp.MasterStats.DamageBonusPercent;
-                summonedStats.SpeedBonusPercent = summonedComp.MasterStats.SpeedBonusPercent;
+                //summonedStats.SpeedBonusPercent = summonedComp.MasterStats.SpeedBonusPercent;
                 summonedStats.Faction = summonedComp.MasterStats.Faction;
                 summoned.SetMasterEntityState(true);
                 //GameObject.Destroy(summoned);

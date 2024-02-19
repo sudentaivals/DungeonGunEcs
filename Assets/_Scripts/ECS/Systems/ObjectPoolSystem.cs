@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
@@ -12,7 +11,10 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
 
     private EcsPool<ObjectPoolHandlerComponent> _objectPoolHandlerPool;
 
+    private EcsPool<NpcIdComponent> _npcIdPool;
+
     private GameObject _poolParent;
+    private const int FLOATING_TEXT_POOL_ID = 99999;
 
     public void Destroy(IEcsSystems systems)
     {
@@ -27,44 +29,67 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
         var world = systems.GetWorld();
         _poolContainer = new();
         _objectPoolHandlerPool = world.GetPool<ObjectPoolHandlerComponent>();
+        _npcIdPool = world.GetPool<NpcIdComponent>();
         EcsEventBus.Subscribe(GameplayEventType.ReturnObjectToPool, ReturnObjectToPool);
         EcsEventBus.Subscribe(GameplayEventType.TakeObjectFromPool, TakeObjectFromPool);
     }
 
     private void ReturnObjectToPool(int entity, EventArgs args)
     {
-        var returnToPoolArgs = args as ReturnObjectToPoolEventArgs;
         ref var poolHandlerComp = ref _objectPoolHandlerPool.Get(entity);
         foreach (var action in poolHandlerComp.ActionsOnReturnToPool)
         {
             action.Action(entity, null);
         }
-        var container = _poolContainer.FirstOrDefault(a => a.PoolId == returnToPoolArgs.PoolId);
+        ref var npcIdComponent = ref _npcIdPool.Get(entity);
+        int poolId = npcIdComponent.Id;
+        var container = _poolContainer.FirstOrDefault(a => a.PoolId == poolId);
         container.ReturnObjectToPool(poolHandlerComp.GameObjectReference);
     }
 
-    private void TakeFloatingTextFromPool(int entity, EventArgs args)
+    private ObjectPoolContainer GetContainer(int poolId, GameObject prefab)
     {
-        
+        var container = _poolContainer.FirstOrDefault(a => a.PoolId == poolId);
+        if(container == null)
+        {
+            container = new ObjectPoolContainer(poolId, prefab);
+            _poolContainer.Add(container);
+        }
+        return container;
     }
 
     private void TakeObjectFromPool(int entity, EventArgs args)
     {
         var takeObjectArgs = args as TakeObjectFromPoolEventArgs;
-        var container = _poolContainer.FirstOrDefault(a => a.PoolId == takeObjectArgs.PoolId);
-        if(container == null)
+        if(takeObjectArgs.ObjectToSpawn == null) return;
+        int poolId = -1;
+        if(takeObjectArgs.ObjectToSpawn.TryGetComponent<ObjectPoolHandler>(out var poolHandler))
         {
-            container = new ObjectPoolContainer(takeObjectArgs.PoolId, takeObjectArgs.ObjectToSpawn);
-            _poolContainer.Add(container);
+            poolId = poolHandler.PoolId;
         }
+        else
+        {
+            return;
+        }
+        var container = GetContainer(poolId, takeObjectArgs.ObjectToSpawn);
         var takenObject = container.TakeObjectFromPool(takeObjectArgs.Position, takeObjectArgs.Rotation, _poolParent.transform);
 
-        foreach(IObjectPoolStatsRestore resetAction in takenObject.GetComponent<ObjectPoolHandler>().ComponentResetList)
-        {
-            resetAction.ResetStats(takenObject);
-        }
-        if(takenObject.TryGetComponent<SummonedObject>(out var summ)) summ.SetMasterEntity(entity);
+        int? pooledObjectEntity = takenObject.GetComponent<ConvertToEntity>().TryGetEntity();
 
+        if(pooledObjectEntity != null)
+        {
+            ref var poolHandlerComp = ref _objectPoolHandlerPool.Get(pooledObjectEntity.Value);
+            foreach (IObjectPoolStatsRestore action in poolHandlerComp.ComponentsResetList)
+            {
+
+               action.ResetStats(takenObject);
+            }
+        }
+
+        foreach (var action in takeObjectArgs.StatsSetters)
+        {
+            action.SetStats(takenObject, entity);
+        }
     }
 }
 

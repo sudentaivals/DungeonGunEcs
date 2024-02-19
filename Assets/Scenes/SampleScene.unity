@@ -211,13 +211,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    OnDamageTake: []
     OnDamageDeal: []
     OnSkillUse: []
-    OnDeath: []
-    OnEvasion: []
     OnStart:
     - {fileID: 11400000, guid: b6ffc3fa848935a43a44ac680cf201dd, type: 2}
+    OnDestroy: []
     StartEventsInvoked: 0
 --- !u!1 &62499975
 GameObject:
@@ -1380,7 +1378,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000003fa047ab41439c4a
+  m_ApplyToSortingLayers: 000000003fa047ab41439c4ac1daa713
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3302,7 +3300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xRange: {x: -5, y: 5}
   _yRange: {x: -5, y: 5}
-  _numberOfSpawns: 25
+  _numberOfSpawns: 200
   _objectToSpawn: {fileID: 2736353337785437072, guid: c1ce00b8a102b8a4e947ff18e0c78b9a, type: 3}
 --- !u!4 &1359625756
 Transform:

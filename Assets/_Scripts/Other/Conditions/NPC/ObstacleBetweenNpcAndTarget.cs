@@ -7,7 +7,10 @@ public class ObstacleBetweenNpcAndTarget : BaseGameCondition
     [SerializeField] bool _isObstacleExists;
     [SerializeField] LayerMask _obstacleLayer;
     [SerializeField] InterfaceReference<IRaycastType, ScriptableObject> _raycastType;
+    [Tooltip("Data for radius (if circle), or X for box")]
     [SerializeField] float _raycastShapeData1;
+
+    [Tooltip("Data for Y for box")]
     [SerializeField] float _raycastShapeData2;
     private RaycastHit2D[] _obstacleColliders = new RaycastHit2D[1];
     public override bool CheckCondition(int senderEntity, int? takerEntity)

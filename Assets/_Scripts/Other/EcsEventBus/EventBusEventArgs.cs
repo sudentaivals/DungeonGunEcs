@@ -221,7 +221,7 @@ public class TakeObjectFromPoolEventArgs : EventArgs
 
     public GameObject ObjectToSpawn {get; set;}
 
-    public int PoolId {get; set;}
+    public List<IMbHelperStatsSetter> StatsSetters {get;set;}
 }
 
 public class AddPushEventArgs : EventArgs

@@ -15,6 +15,8 @@ MonoBehaviour:
   _id: 4
   _animation: {fileID: 7400000, guid: 9cd34b56663257d4d883e29e6e41644d, type: 2}
   _animationStartCondition: {fileID: 0}
-  _actionOnAnimationEnd: {fileID: 11400000, guid: f87aead5e251129409bf1a30dd1c0edd, type: 2}
+  _actionOnAnimationExit: {fileID: 11400000, guid: f87aead5e251129409bf1a30dd1c0edd, type: 2}
+  _actionOnAnimationEnd: {fileID: 0}
   _actionOnAnimationStart: {fileID: 0}
   _priority: 200
+  _isRepeatable: 0

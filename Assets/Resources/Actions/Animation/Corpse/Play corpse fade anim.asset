@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be1468b463616a43bc9022c93b3ae40, type: 3}
-  m_Name: AddBlueBulletToPool
+  m_Script: {fileID: 11500000, guid: 38019e4b41fa5954c8dca288939659c1, type: 3}
+  m_Name: Play corpse fade anim
   m_EditorClassIdentifier: 
-  _poolId: 1
+  _newAnimationState: 11
+  _lockTime: 1.1
+  _targetAnimSpeed: 0.5
+  _changingSpeed: 0
+  _ignoreExitActions: 0

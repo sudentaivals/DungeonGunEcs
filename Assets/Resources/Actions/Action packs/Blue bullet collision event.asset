@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f1bfa90732bd44d96732e2fd6d9b70, type: 3}
   m_Name: Blue bullet collision event
   m_EditorClassIdentifier: 
-  _conditions: []
+  _condition: {fileID: 0}
   _actions:
   - {fileID: 11400000, guid: 0e8d4d8ee9551ff4bae773a3bbd18ea6, type: 2}
   - {fileID: 11400000, guid: 0a137091e5307824eb3401cc277e5a19, type: 2}
   - {fileID: 11400000, guid: c3cda08494408e442b345fa92e841ef7, type: 2}
-  - {fileID: 11400000, guid: d45df52bc23567a4f97a3071af0dc53d, type: 2}
+  - {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}

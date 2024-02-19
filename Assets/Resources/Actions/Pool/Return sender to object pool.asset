@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8be1468b463616a43bc9022c93b3ae40, type: 3}
-  m_Name: Add blue particle to object pool
+  m_Name: Return sender to object pool
   m_EditorClassIdentifier: 
   _poolId: 3

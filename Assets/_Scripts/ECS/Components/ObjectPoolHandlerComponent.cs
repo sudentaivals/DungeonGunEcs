@@ -7,7 +7,8 @@ using UnityEngine;
 public struct ObjectPoolHandlerComponent
 {
     public GameObject GameObjectReference;
-
     public List<GameAction> ActionsOnReturnToPool;
 
+    [RequireInterface(typeof(IObjectPoolStatsRestore))]
+    public List<ScriptableObject> ComponentsResetList;
 }

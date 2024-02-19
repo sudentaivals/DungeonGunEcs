@@ -50,4 +50,5 @@ public enum GameplayEventType
     RemoveAllStatusEffects,
     SetImmuneStatus,
     SetPathfindingStatus,
+    TakeCorpseFromPool,
 }

@@ -1,14 +1,18 @@
+using System.Collections.Generic;
+using System.Linq;
 using AYellowpaper;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "My Assets/Actions/Take object from pool")]
 public class TakeObjectFromPoolAction : GameAction
 {
-    [SerializeField] int _poolId;
+    //[SerializeField] int _poolId;
     [SerializeField] GameObject _prefab;
 
     [SerializeField] InterfaceReference<IPositionType, ScriptableObject> _posType;
     [SerializeField] InterfaceReference<IRotationType, ScriptableObject> _rotType;
+
+    [SerializeField] List<InterfaceReference<IMbHelperStatsSetter, ScriptableObject>> _statsSetters;
 
     [SerializeField] float _rotationDelta;
 
@@ -16,10 +20,10 @@ public class TakeObjectFromPoolAction : GameAction
     public override void Action(int senderEntity, int? takerEntity)
     {
         var args = EventArgsObjectPool.GetArgs<TakeObjectFromPoolEventArgs>();
-        args.PoolId = _poolId;
         args.ObjectToSpawn = _prefab;
         args.Position = GetPosition(senderEntity);
         args.Rotation = GetRotation(senderEntity);
+        args.StatsSetters = _statsSetters.Select(x => x.Value).ToList();
         EcsEventBus.Publish(GameplayEventType.TakeObjectFromPool, senderEntity, args);
     }
 

@@ -38,6 +38,7 @@ public class EcsStart : MonoBehaviour
             .Add(new NpcSkillSelectionSystem())
             .Add(new MaterialSystem())
             .Add(new NpcBehaviorSystem())
+            .Add(new CorpseStatsSystem())
             .Init();
         _fixedUpdateSystems
             .Add(new NpcToTargetPathSystem())

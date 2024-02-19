@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5688957974135334827}
   - component: {fileID: 294337809755646944}
   - component: {fileID: -1459231684511415238}
+  - component: {fileID: -8256861515455718288}
   m_Layer: 0
   m_Name: BlueBulletParticle
   m_TagString: Untagged
@@ -4902,8 +4903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 199052256839884750}
-    Prefab: {fileID: 199052256839884750}
     ActionsOnReturnToPool: []
+    ComponentsResetList: []
 --- !u!114 &294337809755646944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4916,7 +4917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aacaae9ddc84f04e89e9e8eb7b47fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentsResetList: []
+  _poolId: 900
 --- !u!114 &-1459231684511415238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4930,3 +4931,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionOnParticleStopped: {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
+--- !u!114 &-8256861515455718288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199052256839884750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5344a9d1e58384f892cb28a3997f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    GameObjectReference: {fileID: 199052256839884750}
+    Id: 900
+    Name: Blue particle
+    Description: Blue bullet particle

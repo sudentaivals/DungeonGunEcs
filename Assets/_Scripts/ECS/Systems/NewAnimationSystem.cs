@@ -31,37 +31,6 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
         {
             SetNewAnimationId(entity);
             SetAnimationTransition(entity);
-            //TriggerAnimationExit(entity);
-            /*
-            ref var newAnimationComponent = ref _newAnimationPool.Get(entity);
-            if(Time.time < newAnimationComponent.LockedTill) continue;
-            //find new state
-            var newState = newAnimationComponent.AnimationStates.OrderBy(state => state.Priority)
-                                                                .Where(state => state.CheckStartCondition(entity))
-                                                                .FirstOrDefault();
-            if(newState == null) continue;
-
-            if(newState.Id == newAnimationComponent.CurrentStateId)
-            {
-                if((int)newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime % 1 == 0) continue;
-                newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime = 0f;
-            }
-            else
-            {
-                //exit actions
-                int oldStateId = newAnimationComponent.CurrentStateId;
-                var oldState = newAnimationComponent.AnimationStates.FirstOrDefault(x => x.Id == oldStateId);
-                if(oldState != null)
-                {
-                    newAnimationComponent.AnimancerComponent.States.Current.Speed = BASE_SPEED;// newAnimationComponent.AnimancerComponent.States.Current.Length;
-                    oldState.OnAnimationEnd(entity);
-                }
-                //new state assign and actions
-                newAnimationComponent.CurrentStateId = newState.Id;
-                newAnimationComponent.AnimancerComponent.Play(newState.Animation);
-                newState.OnAnimationStart(entity);
-            }
-            */
         }
     }
 
@@ -75,20 +44,31 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
         ref var newAnimationComponent = ref _newAnimationPool.Get(entity);
         if(newAnimationComponent.NewStateId == newAnimationComponent.CurrentStateId)
         {
-            if((int)newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime % 1 == 0) return;
-            newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime = 0f;
+            //Debug.Log((int)newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime % 1);
+            //Debug.Log(newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime);
+            if(newAnimationComponent.AnimancerComponent.States.Current == null) return;
+            if(newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime < 1) return;
+            var currentAnimancerState = newAnimationComponent.AnimancerComponent.States.Current;
+            var currentStateId = newAnimationComponent.CurrentStateId;
+            var currentState = newAnimationComponent.AnimationStates.FirstOrDefault(state => state.Id == currentStateId);
+            if(currentState.IsRepeatable)
+            {
+                newAnimationComponent.AnimancerComponent.States.Current.NormalizedTime = 0f;
+            }
+            currentState.OnAnimationEnd(entity);
         }
         else
         {
             newAnimationComponent.OldStateId = newAnimationComponent.CurrentStateId;
             newAnimationComponent.CurrentStateId = newAnimationComponent.NewStateId;
-
             //start actions
             var currentStateId = newAnimationComponent.CurrentStateId;
             var currentState = newAnimationComponent.AnimationStates.FirstOrDefault(state => state.Id == currentStateId);
             //anim speed diff
-            if(newAnimationComponent.AnimancerComponent.States.Count > 0) newAnimationComponent.AnimancerComponent.States.Current.Speed = BASE_SPEED;
+            if(newAnimationComponent.AnimancerComponent.States.Count > 0)
+                if(newAnimationComponent.AnimancerComponent.States.Current != null) newAnimationComponent.AnimancerComponent.States.Current.Speed = BASE_SPEED;
             newAnimationComponent.AnimancerComponent.Play(currentState.Animation);
+            //newAnimationComponent.AnimancerComponent.States.Current.IsLooping = currentState.IsLooping;
             if(newAnimationComponent.ChangeSpeed)
             {
                 float animationBaseSpeed = newAnimationComponent.AnimancerComponent.States.Current.Length;
@@ -104,7 +84,7 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
             {
                 if(newAnimationComponent.TriggerExitActions == true)
                 {
-                        oldState.OnAnimationEnd(entity);
+                    oldState.OnAnimationExit(entity);
                 }
             }
             newAnimationComponent.TriggerExitActions = true;
@@ -140,35 +120,5 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
         newAnimationComponent.ChangeSpeed = changeAnimArgs.ChangeAnimationSpeed;
         newAnimationComponent.DesireAnimationSpeed = changeAnimArgs.TargetAnimationSpeed;
         newAnimationComponent.TriggerExitActions = !changeAnimArgs.IgnoreExitActions;
-
-
-
-        /*
-        var animantionState = newAnimationComponent.AnimationStates.FirstOrDefault(x => x.Id == changeAnimArgs.AnimationId);
-        if(animantionState == null) return;
-        //old state exit and length reset
-        int oldStateId = newAnimationComponent.CurrentStateId;
-        var oldState = newAnimationComponent.AnimationStates.FirstOrDefault(x => x.Id == oldStateId);
-        if(oldState != null)
-        {
-            newAnimationComponent.AnimancerComponent.States.Current.Speed = BASE_SPEED;// newAnimationComponent.AnimancerComponent.States.Current.Length;
-            if(!changeAnimArgs.IgnoreExitActions) oldState.OnAnimationEnd(sender);
-        }
-
-        //new state assign
-        newAnimationComponent.CurrentStateId = animantionState.Id;
-        newAnimationComponent.AnimancerComponent.Play(animantionState.Animation);
-
-        if(changeAnimArgs.ChangeAnimationSpeed)
-        {
-            float animationBaseSpeed = newAnimationComponent.AnimancerComponent.States.Current.Length;
-            float animationSpeed = animationBaseSpeed / changeAnimArgs.TargetAnimationSpeed;
-            newAnimationComponent.AnimancerComponent.States.Current.Speed = animationSpeed;
-        }
-        
-        animantionState.OnAnimationStart(sender);
-
-        newAnimationComponent.LockedTill = Time.time + changeAnimArgs.LockTime;
-        */
     }
 }
