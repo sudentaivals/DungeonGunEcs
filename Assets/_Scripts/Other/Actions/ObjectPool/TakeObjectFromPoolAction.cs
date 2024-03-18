@@ -16,6 +16,8 @@ public class TakeObjectFromPoolAction : GameAction
 
     [SerializeField] float _rotationDelta;
 
+    [SerializeField] float _distanceDelta;
+
 
     public override void Action(int senderEntity, int? takerEntity)
     {
@@ -27,9 +29,10 @@ public class TakeObjectFromPoolAction : GameAction
         EcsEventBus.Publish(GameplayEventType.TakeObjectFromPool, senderEntity, args);
     }
 
-        private Vector3 GetPosition(int senderEntity)
+    private Vector3 GetPosition(int senderEntity)
     {
-        return _posType.Value.GetPosition(senderEntity, null);
+        var delta = Random.insideUnitCircle * _distanceDelta;
+        return _posType.Value.GetPosition(senderEntity, null) + delta;
     }
 
     private Quaternion GetRotation(int senderEntity)

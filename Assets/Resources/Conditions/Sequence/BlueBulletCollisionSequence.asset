@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BlueBulletCollisionSequence
   m_EditorClassIdentifier: 
   _conditions:
-  - {fileID: 11400000, guid: 9a27541e444ca9a40add7cf4071380b5, type: 2}
-  - {fileID: 11400000, guid: e6ce417ffbe6e7744b1351474520e925, type: 2}
+  - {fileID: 11400000, guid: 6d308ed2cd5b6454b9628b9b62e58882, type: 2}
   - {fileID: 11400000, guid: c7d058aefaec894489cb4360b6072ade, type: 2}
+  - {fileID: 11400000, guid: 9a27541e444ca9a40add7cf4071380b5, type: 2}

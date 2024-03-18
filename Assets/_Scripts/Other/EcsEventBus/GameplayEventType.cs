@@ -51,4 +51,6 @@ public enum GameplayEventType
     SetImmuneStatus,
     SetPathfindingStatus,
     TakeCorpseFromPool,
+    ChangeSprite,
+    RegisterTimedAction,
 }

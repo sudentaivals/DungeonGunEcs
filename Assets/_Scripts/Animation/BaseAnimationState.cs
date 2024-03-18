@@ -10,6 +10,7 @@ public class BaseAnimationState : ScriptableObject
     [SerializeField] GameAction _actionOnAnimationExit;
     [SerializeField] GameAction _actionOnAnimationEnd;
     [SerializeField] GameAction _actionOnAnimationStart;
+    [Tooltip("Higher priority plays first")]
     [SerializeField] int _priority;
     [SerializeField] bool _isRepeatable;
     public int Id => _id;

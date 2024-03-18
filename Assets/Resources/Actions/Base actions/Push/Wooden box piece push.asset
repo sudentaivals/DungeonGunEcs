@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1aeb6fec2d24b48a7ba04a15f06f98, type: 3}
+  m_Name: Wooden box piece push
+  m_EditorClassIdentifier: 
+  _pushPower: 6
+  _rotationType:
+    _underlyingValue: {fileID: 11400000, guid: 0e1e8cab521921f40bf56d11c12d3a60, type: 2}
+  _isReversed: 0
+  _targetIsSender: 1
+  _isImpulse: 1

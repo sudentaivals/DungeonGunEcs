@@ -9,6 +9,8 @@ public class EcsStart : MonoBehaviour
     EcsSystems _fixedUpdateSystems;
     EcsSystems _lateUpdateSystems;
 
+    EcsSystems _editorSystems;
+
 
     void OnEnable()
     {
@@ -16,6 +18,7 @@ public class EcsStart : MonoBehaviour
         _fixedUpdateSystems = new EcsSystems(World);
         _lateUpdateSystems = new EcsSystems(World);
         _updateSystems = new EcsSystems(World);
+        _editorSystems = new EcsSystems(World);
         _updateSystems.ConvertScene()
             #region EventsOnly
             .Add(new ForcedDirectionMovementSystem())
@@ -23,7 +26,6 @@ public class EcsStart : MonoBehaviour
             .Add(new NpcMovementSystem())
             .Add(new GlobalStatsSystem())
             #endregion
-            .Add(new StartEventsInvokerSystem())
             .Add(new MouseFollowSystem())
             .Add(new ObjectPoolSystem())
             .Add(new PlayerInputSystem())
@@ -39,6 +41,9 @@ public class EcsStart : MonoBehaviour
             .Add(new MaterialSystem())
             .Add(new NpcBehaviorSystem())
             .Add(new CorpseStatsSystem())
+            .Add(new SummonedObjectSystem())
+            .Add(new StartEventsInvokerSystem())
+            .Add(new TimedActionSystem())
             .Init();
         _fixedUpdateSystems
             .Add(new NpcToTargetPathSystem())
@@ -54,18 +59,26 @@ public class EcsStart : MonoBehaviour
             .Init();
         _lateUpdateSystems
             .Add(new UiHealthbarSystem())
-            .Add(new SummonedObjectSystem())
+            //.Add(new SummonedObjectSystem())
             .Add(new ProjectileStartupSystem())
             .Add(new BulletPathSystem())
             .Add(new DealDamageSystem())
             .Add(new DestroyAndSpawnEntitiesSystem())
             .Init();
+#if UNITY_EDITOR
+        _editorSystems
+            .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
+            .Init();
+#endif
     }
 
 
     void Update()
     {
         _updateSystems?.Run();
+#if UNITY_EDITOR
+        _editorSystems?.Run();
+#endif
         
     }
 
@@ -91,6 +104,13 @@ public class EcsStart : MonoBehaviour
             _lateUpdateSystems.Destroy();
             _lateUpdateSystems = null;
         }
+#if UNITY_EDITOR
+        if(_editorSystems != null)
+        {
+            _editorSystems.Destroy();
+            _editorSystems = null;
+        }
+#endif
         if (World != null)
         {
             World.Destroy();

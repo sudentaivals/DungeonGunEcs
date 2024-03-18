@@ -32,6 +32,7 @@ public class CombineMovementSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroyS
     private void AddPush(int entity, EventArgs args)
     {
         var pushArgs = args as AddPushEventArgs;
+        if(!_pushStatsPool.Has(entity)) return;
         ref var pushStats = ref _pushStatsPool.Get(entity);
         var newPush = pushArgs.Direction * pushArgs.PushPower * (1f - pushStats.PushResistance);
         ref var physicalBodyComponent = ref _physicalBodyPool.Get(entity);

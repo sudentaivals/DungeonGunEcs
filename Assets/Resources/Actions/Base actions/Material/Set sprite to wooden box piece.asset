@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15fd5a789cee3434c909f1aa9cbfb7b7, type: 3}
+  m_Name: Set sprite to wooden box piece
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: -5688956413077253491, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}
+  - {fileID: 546535986855887430, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}
+  - {fileID: -4990361253961035843, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}
+  - {fileID: 4053375744630672729, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}
+  - {fileID: 2834888629653501596, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}
+  - {fileID: -2796105001415810770, guid: b1e514ee9c00f0c458e99f588dfa4cb0, type: 3}

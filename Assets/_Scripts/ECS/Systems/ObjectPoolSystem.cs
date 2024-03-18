@@ -13,6 +13,8 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
 
     private EcsPool<NpcIdComponent> _npcIdPool;
 
+    private EcsPool<EventsComponent> _eventsComponentPool;
+
     private GameObject _poolParent;
     private const int FLOATING_TEXT_POOL_ID = 99999;
 
@@ -30,6 +32,7 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
         _poolContainer = new();
         _objectPoolHandlerPool = world.GetPool<ObjectPoolHandlerComponent>();
         _npcIdPool = world.GetPool<NpcIdComponent>();
+        _eventsComponentPool = world.GetPool<EventsComponent>();
         EcsEventBus.Subscribe(GameplayEventType.ReturnObjectToPool, ReturnObjectToPool);
         EcsEventBus.Subscribe(GameplayEventType.TakeObjectFromPool, TakeObjectFromPool);
     }
@@ -43,7 +46,7 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
         }
         ref var npcIdComponent = ref _npcIdPool.Get(entity);
         int poolId = npcIdComponent.Id;
-        var container = _poolContainer.FirstOrDefault(a => a.PoolId == poolId);
+        var container = GetContainer(poolId, poolHandlerComp.GameObjectReference);
         container.ReturnObjectToPool(poolHandlerComp.GameObjectReference);
     }
 
@@ -86,6 +89,16 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
             }
         }
 
+        if(pooledObjectEntity != null)
+        {
+            if(_eventsComponentPool.Has(pooledObjectEntity.Value))
+            {
+                ref var eventsComp = ref _eventsComponentPool.Get(pooledObjectEntity.Value);
+                eventsComp.StartEventsInvoked = false;
+            }
+        }
+
+        if(takeObjectArgs.StatsSetters == null) return;
         foreach (var action in takeObjectArgs.StatsSetters)
         {
             action.SetStats(takenObject, entity);

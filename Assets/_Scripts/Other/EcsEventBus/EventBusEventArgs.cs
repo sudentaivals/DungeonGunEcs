@@ -272,3 +272,16 @@ public class ChangePathfindingStatusEventArgs : EventArgs
     public bool IsPathfindingActive {get;set;}
 }
 
+public class ChangeSpriteEventArgs : EventArgs
+{
+    public Sprite Sprite {get;set;}
+}
+
+public class RegisterTimedActionEventArgs : EventArgs
+{
+    public int? TakerEntity {get;set;}
+    public GameAction Action {get;set;}
+
+    public float Timer {get;set;}
+}
+

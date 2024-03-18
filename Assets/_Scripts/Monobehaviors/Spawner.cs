@@ -15,11 +15,11 @@ public class Spawner : MonoBehaviour
         {
             var spawnXPos = transform.position.x + UnityEngine.Random.Range(_xRange.x, _xRange.y);
             var spawnYPos = transform.position.y + UnityEngine.Random.Range(_yRange.x, _yRange.y);
-            var spawnArgs = EventArgsObjectPool.GetArgs<SpawnEntityEventArgs>();
-            spawnArgs.PrefabToSpawn = _objectToSpawn;
+            var spawnArgs = EventArgsObjectPool.GetArgs<TakeObjectFromPoolEventArgs>();
+            spawnArgs.ObjectToSpawn = _objectToSpawn;
             spawnArgs.Position = new Vector3(spawnXPos, spawnYPos, 0);
             spawnArgs.Rotation = Quaternion.identity;
-            EcsEventBus.Publish(GameplayEventType.SpawnObject, -1, spawnArgs);
+            EcsEventBus.Publish(GameplayEventType.TakeObjectFromPool, -1, spawnArgs);
         }
     }
 

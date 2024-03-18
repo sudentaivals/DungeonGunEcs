@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67e73db846f08e44a0706e7f45a0917, type: 3}
+  m_Name: ObstacleFade
+  m_EditorClassIdentifier: 
+  _id: 11
+  _animation: {fileID: 7400000, guid: dee2a346dceadc74fb0e0b35b37d7519, type: 2}
+  _animationStartCondition: {fileID: 0}
+  _actionOnAnimationExit: {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
+  _actionOnAnimationEnd: {fileID: 0}
+  _actionOnAnimationStart: {fileID: 0}
+  _priority: 110
+  _isRepeatable: 0

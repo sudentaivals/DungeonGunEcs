@@ -14,6 +14,13 @@
       "dependencies": {},
       "hash": "af2787e50fb3503b2728cdaee644958f45a27a23"
     },
+    "com.leopotam.ecslite.unityeditor": {
+      "version": "https://github.com/Leopotam/ecslite-unityeditor.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "480dbdfd0d73591f93ca010ea1a52bfa8e4cc06e"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.6",
       "depth": 1,

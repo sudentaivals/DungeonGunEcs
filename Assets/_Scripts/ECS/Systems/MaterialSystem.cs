@@ -1,6 +1,5 @@
 using Leopotam.EcsLite;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +13,7 @@ public class MaterialSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
     {
         EcsEventBus.Unsubscribe(GameplayEventType.AddColor, AddColor);
         EcsEventBus.Unsubscribe(GameplayEventType.RemoveColor, RemoveColor);
+        EcsEventBus.Unsubscribe(GameplayEventType.ChangeSprite, ChangeSprite);
     }
 
     public void Init(IEcsSystems systems)
@@ -23,6 +23,15 @@ public class MaterialSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
         _materialPool = world.GetPool<MaterialComponent>();
         EcsEventBus.Subscribe(GameplayEventType.AddColor, AddColor);
         EcsEventBus.Subscribe(GameplayEventType.RemoveColor, RemoveColor);
+        EcsEventBus.Subscribe(GameplayEventType.ChangeSprite, ChangeSprite);
+    }
+
+    private void ChangeSprite(int sender, EventArgs args)
+    {
+        var spriteChangeArgs = args as ChangeSpriteEventArgs;
+        ref var materialComp = ref _materialPool.Get(sender);
+        materialComp.Renderer.sprite = spriteChangeArgs.Sprite;
+
     }
 
     public void Run(IEcsSystems systems)

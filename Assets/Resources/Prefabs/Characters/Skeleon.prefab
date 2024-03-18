@@ -32,6 +32,8 @@ GameObject:
   - component: {fileID: 8223203322267201071}
   - component: {fileID: 6233978713343120763}
   - component: {fileID: 1852014066565803537}
+  - component: {fileID: -843684087840235134}
+  - component: {fileID: 46058162981477517}
   m_Layer: 12
   m_Name: Skeleon
   m_TagString: Untagged
@@ -182,7 +184,7 @@ MonoBehaviour:
     DamageReductionFlat: 0
     OnDeath:
     - {fileID: 11400000, guid: 018cc7c4e4e03af4f9fb348b566c2575, type: 2}
-    - {fileID: 11400000, guid: 61f713ca131954f44bfc01801dcfdcdb, type: 2}
+    - {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
     OnEvasion: []
     OnDamageTake: []
 --- !u!114 &2736353337785437070
@@ -450,6 +452,37 @@ MonoBehaviour:
     Id: 100
     Name: Skeleton
     Description: Base enemy. Shoots purple spheres.
+--- !u!114 &-843684087840235134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736353337785437072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aacaae9ddc84f04e89e9e8eb7b47fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolId: 100
+--- !u!114 &46058162981477517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736353337785437072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05beb03cf4bf13439602d85c1fe8ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    GameObjectReference: {fileID: 2736353337785437072}
+    ActionsOnReturnToPool: []
+    ComponentsResetList:
+    - {fileID: 11400000, guid: 374e135d69c22ec4e883024d1fb7d85c, type: 2}
+    - {fileID: 11400000, guid: 7375bd17da57f9a46a719317c6a24103, type: 2}
 --- !u!1 &2736353338062552166
 GameObject:
   m_ObjectHideFlags: 0
