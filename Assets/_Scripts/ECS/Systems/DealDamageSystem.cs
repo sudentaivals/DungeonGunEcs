@@ -43,6 +43,7 @@ public class DealDamageSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
             //get stats and events comp
             ref var takerEvents = ref _eventsPool.Get(result.TakerEntity);
             ref var takerStats = ref _statsPool.Get(result.TakerEntity);
+            if(!_healthPool.Has(result.TakerEntity)) continue;
             ref var takerHealth = ref _healthPool.Get(result.TakerEntity);
             if(!takerHealth.IsAlive) continue;
             GlobalStatsComponent senderStats = new GlobalStatsComponent();

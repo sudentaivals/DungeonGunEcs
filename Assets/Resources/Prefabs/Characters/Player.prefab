@@ -29,6 +29,8 @@ GameObject:
   - component: {fileID: 7591240123077373490}
   - component: {fileID: 6461983678299658587}
   - component: {fileID: 7640871432304729071}
+  - component: {fileID: 1282441244}
+  - component: {fileID: 1282441243}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -81,14 +83,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
+    IsImmune: 0
     Faction: 1
     UnitType: 1
-    EvasionChance: 0
-    DamageReductionPercent: 0
-    DamageReductionFlat: 0
     DamageBonusPercent: 0
     DamageBonusFlat: 0
-    SpeedBonusPercent: 0
     CooldownReduction: 0
 --- !u!50 &7700623860649324578
 Rigidbody2D:
@@ -124,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
+    PlayerInputNewSystem: {fileID: 11400000, guid: 3fae9aa0fb9f73447bcc83da317c0fae, type: 2}
     IsShooting: 0
     IsAutomaticShooting: 0
     IsAlternateShooting: 0
@@ -133,6 +133,8 @@ MonoBehaviour:
     RollDuration: 0
     RollLenght: 0
     CurrentRollDuration: 0
+    UsableObjectIsUsing: 0
+    UsableObjectIsSwapped: 0
 --- !u!58 &7700623860649324579
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -240,13 +242,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    OnDamageTake: []
     OnDamageDeal: []
     OnSkillUse: []
-    OnDeath: []
-    OnEvasion: []
     OnStart:
     - {fileID: 11400000, guid: ae49a7f2ca86bfb4084a8a4a89159575, type: 2}
+    OnDestroy: []
     StartEventsInvoked: 0
 --- !u!114 &7700623862119895451
 MonoBehaviour:
@@ -306,6 +306,12 @@ MonoBehaviour:
     CurrentHealth: 1000
     MaxHealthBonus: 0
     BaseHealth: 1000
+    EvasionChance: 0
+    DamageReductionPercent: 0
+    DamageReductionFlat: 0
+    OnDeath: []
+    OnEvasion: []
+    OnDamageTake: []
 --- !u!114 &4477642065893138238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,8 +397,50 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a01e11ebcc73e0647b981a07f21a2bad, type: 2}
     - {fileID: 11400000, guid: e8e2eeb1e61eeba4e9d89fbee82bc11a, type: 2}
     - {fileID: 11400000, guid: 08e0f74910b8c8140922a51d104c6540, type: 2}
+    LockedState: 0
+    OldStateId: 0
+    NewStateId: 0
+    ChangeSpeed: 0
+    DesireAnimationSpeed: 0
+    TriggerExitActions: 0
     LockedTill: 0
     CurrentStateId: 0
+--- !u!114 &1282441244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700623860649324588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58003ea2392c05649b824b924a643e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    PickupRadius: 1
+    NearbyUsableObjects: 
+    CurrentSelectedUsableObject: 0
+    UsableObjectIsSelected: 0
+--- !u!114 &1282441243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700623860649324588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0986d381acd8d414ba7cfda41a49f340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _circles:
+  - Offset: {x: 0, y: 0, z: 0}
+    Radius: 1
+    Color: {r: 1, g: 0.87243414, b: 0, a: 1}
+    Show: 1
+    Name: Pickup radius
+  _rectangles: []
 --- !u!1 &7700623860660709792
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class MaterialSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
         EcsEventBus.Unsubscribe(GameplayEventType.AddColor, AddColor);
         EcsEventBus.Unsubscribe(GameplayEventType.RemoveColor, RemoveColor);
         EcsEventBus.Unsubscribe(GameplayEventType.ChangeSprite, ChangeSprite);
+        EcsEventBus.Unsubscribe(GameplayEventType.SetOutlineThickness, SetOutlineThickness);
     }
 
     public void Init(IEcsSystems systems)
@@ -24,6 +25,7 @@ public class MaterialSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
         EcsEventBus.Subscribe(GameplayEventType.AddColor, AddColor);
         EcsEventBus.Subscribe(GameplayEventType.RemoveColor, RemoveColor);
         EcsEventBus.Subscribe(GameplayEventType.ChangeSprite, ChangeSprite);
+        EcsEventBus.Subscribe(GameplayEventType.SetOutlineThickness, SetOutlineThickness);
     }
 
     private void ChangeSprite(int sender, EventArgs args)
@@ -32,6 +34,13 @@ public class MaterialSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
         ref var materialComp = ref _materialPool.Get(sender);
         materialComp.Renderer.sprite = spriteChangeArgs.Sprite;
 
+    }
+
+    private void SetOutlineThickness(int sender, EventArgs args)
+    {
+        var outlineThicknessArgs = args as SetOutlineThicknessEventArgs;
+        ref var materialComp = ref _materialPool.Get(sender);
+        materialComp.Renderer.material.SetFloat(ShaderParam.OutlineThickness, outlineThicknessArgs.Thickness);
     }
 
     public void Run(IEcsSystems systems)

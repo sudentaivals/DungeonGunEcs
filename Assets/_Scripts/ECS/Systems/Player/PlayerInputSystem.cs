@@ -1,26 +1,33 @@
 using Leopotam.EcsLite;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputSystem : IEcsRunSystem
+public class PlayerInputSystem : IEcsRunSystem, IEcsInitSystem
 {
-    public void Run(IEcsSystems systems)
+    private EcsFilter _filter;
+    private EcsPool<PlayerInputComponent> _playerInputPool;
+
+    public void Init(IEcsSystems systems)
     {
         var world = systems.GetWorld();
+        _filter = world.Filter<PlayerInputComponent>().End();
+        _playerInputPool = world.GetPool<PlayerInputComponent>();
+    }
 
-        var filter = world.Filter<PlayerInputComponent>().End();
-        var playerInputPool = world.GetPool<PlayerInputComponent>();
-
-        foreach (int entity in filter)
+    public void Run(IEcsSystems systems)
+    {
+        foreach (int entity in _filter)
         {
-            ref PlayerInputComponent playerInputComponent = ref playerInputPool.Get(entity);
-            playerInputComponent.HorizontalMovement = Input.GetAxisRaw("Horizontal");
-            playerInputComponent.VerticalMovement = Input.GetAxisRaw("Vertical");
-            playerInputComponent.RollPressed = Input.GetButtonDown("Roll");
-            playerInputComponent.IsShooting = Input.GetButtonDown("Fire1");
-            playerInputComponent.IsAlternateShooting = Input.GetButtonDown("Fire2");
-            playerInputComponent.IsAutomaticShooting = Input.GetButton("Fire1");
+            ref PlayerInputComponent playerInputComponent = ref _playerInputPool.Get(entity);
+            var playerControls = InputSingleton.Instance.PlayerControls;
+            if(playerControls == null) continue;
+            playerInputComponent.HorizontalMovement = playerControls.Player.Move.ReadValue<Vector2>().x;
+            playerInputComponent.VerticalMovement = playerControls.Player.Move.ReadValue<Vector2>().y;
+            playerInputComponent.RollPressed = playerControls.Player.Roll.WasPressedThisFrame();
+            playerInputComponent.IsShooting = playerControls.Player.Primaryfire.WasPressedThisFrame();
+            playerInputComponent.IsAlternateShooting = playerControls.Player.Alternativefire.WasPressedThisFrame();
+            playerInputComponent.IsAutomaticShooting = playerControls.Player.Primaryfire.IsPressed();
+            //playerInputComponent.UsableObjectIsSwapped = Input.GetButtonDown("Fire3");
+            playerInputComponent.UseObject = playerControls.Player.Useobject.WasPressedThisFrame();
         }
     }
 }

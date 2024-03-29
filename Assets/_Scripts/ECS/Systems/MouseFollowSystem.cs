@@ -23,7 +23,7 @@ public class MouseFollowSystem : IEcsInitSystem, IEcsDestroySystem, IEcsRunSyste
         foreach (int entity in _filter)
         {
             ref var transformComponent = ref _transformPool.Get(entity);
-            transformComponent.Transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transformComponent.Transform.position = Camera.main.ScreenToWorldPoint(InputSingleton.Instance.MousePosition);
         }
     }
 }

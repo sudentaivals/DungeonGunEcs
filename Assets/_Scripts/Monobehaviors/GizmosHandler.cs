@@ -14,6 +14,7 @@ public class GizmosHandler : MonoBehaviour
         {
             foreach (var circle in _circles)
             {
+                if(!circle.Show) continue;
                 Gizmos.color = circle.Color;
                 Gizmos.DrawWireSphere(transform.position + circle.Offset, circle.Radius);
             }
@@ -22,6 +23,7 @@ public class GizmosHandler : MonoBehaviour
         {
             foreach (var rectangle in _rectangles)
             {
+                if(!rectangle.Show) continue;
                 Gizmos.color = rectangle.Color;
                 Gizmos.DrawWireCube(transform.position + rectangle.Offset, rectangle.Size);
             }
@@ -35,6 +37,10 @@ public struct CircleDrawHandler
     public Vector3 Offset;
     public float Radius;
     public Color Color;
+
+    public bool Show;
+
+    public string Name;
 }
 
 [Serializable]
@@ -45,4 +51,8 @@ public struct RectangleDrawHandler
     public Vector3 Offset;
     
     public Color Color;
+
+    public bool Show;
+
+    public string Name;
 }

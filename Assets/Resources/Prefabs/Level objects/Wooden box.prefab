@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    Condition: {fileID: 11400000, guid: 00cbdc7a70bfee84fbfa56e2e7258445, type: 2}
+    Condition: {fileID: 11400000, guid: f33f4b1653c8c784d93f6929dbfed652, type: 2}
     Action: {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
 --- !u!114 &564908047335405882
 MonoBehaviour:
@@ -164,6 +164,8 @@ MonoBehaviour:
   - Offset: {x: 0, y: 0, z: 0}
     Radius: 0.36
     Color: {r: 1, g: 0.875481, b: 0.3254717, a: 1}
+    Show: 0
+    Name: 
   _rectangles: []
 --- !u!114 &919853491256694451
 MonoBehaviour:
@@ -194,7 +196,9 @@ MonoBehaviour:
     GameObjectReference: {fileID: 6616555072776526421}
     ActionsOnReturnToPool:
     - {fileID: 11400000, guid: 7fc93351cec719f45b38d11e7ac08b96, type: 2}
-    ComponentsResetList: []
+    ComponentsResetList:
+    - {fileID: 11400000, guid: 374e135d69c22ec4e883024d1fb7d85c, type: 2}
+    - {fileID: 11400000, guid: 7375bd17da57f9a46a719317c6a24103, type: 2}
 --- !u!114 &2412851708328942378
 MonoBehaviour:
   m_ObjectHideFlags: 0

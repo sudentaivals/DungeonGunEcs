@@ -285,3 +285,8 @@ public class RegisterTimedActionEventArgs : EventArgs
     public float Timer {get;set;}
 }
 
+public class SetOutlineThicknessEventArgs : EventArgs
+{
+    public float Thickness {get;set;}
+}
+

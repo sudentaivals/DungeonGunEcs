@@ -1,8 +1,5 @@
 using Leopotam.EcsLite;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class PlayerSkillControllerSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
 {

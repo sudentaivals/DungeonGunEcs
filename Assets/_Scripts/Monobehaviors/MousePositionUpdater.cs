@@ -11,6 +11,6 @@ public class MousePositionUpdater : MonoBehaviour
     }
     void Update()
     {
-        transform.position = Input.mousePosition;
+        transform.position = InputSingleton.Instance.MousePosition;
     }
 }

@@ -16,7 +16,9 @@ public struct PlayerInputComponent
     public float VerticalMovement;
     //roll
     public bool RollPressed;
-    public float RollDuration;
-    public float RollLenght;
-    public float CurrentRollDuration;
+
+    //usable items
+    public bool UseObject;
+
+    public bool UsableObjectIsSwapped;
 }

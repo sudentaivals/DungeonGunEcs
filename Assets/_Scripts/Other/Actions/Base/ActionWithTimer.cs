@@ -14,4 +14,9 @@ public class ActionWithTimer : GameAction
         args.TakerEntity = takerEntity;
         EcsEventBus.Publish(GameplayEventType.RegisterTimedAction, senderEntity, args);
     }
+
+    private void OnValidate()
+    {
+        if(_timer < 0) _timer = 0;
+    }
 }

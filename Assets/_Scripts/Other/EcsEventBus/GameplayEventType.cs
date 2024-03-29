@@ -53,4 +53,6 @@ public enum GameplayEventType
     TakeCorpseFromPool,
     ChangeSprite,
     RegisterTimedAction,
+    UseObject,
+    SetOutlineThickness,
 }

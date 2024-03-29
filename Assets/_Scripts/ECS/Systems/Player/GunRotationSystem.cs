@@ -38,7 +38,7 @@ public class GunRotationSystem : IEcsRunSystem, IEcsInitSystem
 
 
             var testVector = new Vector2(1f, 0f);
-            var mousePos = Input.mousePosition;
+            var mousePos = InputSingleton.Instance.MousePosition;
             var mouseToWorldPos = _mainCamera.ScreenToWorldPoint(mousePos);
             mouseToWorldPos.z = 0;
 

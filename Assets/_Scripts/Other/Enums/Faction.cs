@@ -6,5 +6,6 @@ public enum Faction
 {
     Enemy,
     Player,
-    None
+    None,
+    Pickup
 }

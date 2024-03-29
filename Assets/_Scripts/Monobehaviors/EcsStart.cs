@@ -32,8 +32,9 @@ public class EcsStart : MonoBehaviour
             .Add(new RotationSystem())
             .Add(new SkillSystem())
             .Add(new PlayerSkillControllerSystem())
+            .Add(new PlayerUseObjectsSystem())
             .Add(new GunRotationSystem())
-            .Add(new PlayerStateChangeSystem())
+            //.Add(new PlayerStateChangeSystem())
             .Add(new NewAnimationSystem())
             .Add(new FloatingTextSystem())
             .Add(new StatusEffectSystem())
@@ -43,6 +44,7 @@ public class EcsStart : MonoBehaviour
             .Add(new CorpseStatsSystem())
             .Add(new SummonedObjectSystem())
             .Add(new StartEventsInvokerSystem())
+            .Add(new UsableObjectSystem())
             .Add(new TimedActionSystem())
             .Init();
         _fixedUpdateSystems

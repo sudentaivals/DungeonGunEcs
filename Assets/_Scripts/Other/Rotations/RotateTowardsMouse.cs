@@ -8,7 +8,7 @@ public class RotateTowardsMouse :ScriptableObject, IRotationType
         var transformPool = EcsStart.World.GetPool<TransformComponent>();
         ref var hostTransform = ref transformPool.Get(sender);
 
-        var mousePos = Input.mousePosition;
+        var mousePos = InputSingleton.Instance.MousePosition;
         var mouseToWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         mouseToWorldPos.z = 0;
         var playerMouseVector = mouseToWorldPos - hostTransform.Transform.position;
