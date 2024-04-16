@@ -160,7 +160,6 @@ MonoBehaviour:
     UnitType: 0
     DamageBonusPercent: 0
     DamageBonusFlat: 0
-    SpeedBonusPercent: 0
     CooldownReduction: 0
 --- !u!114 &1769070963644515158
 MonoBehaviour:
@@ -207,6 +206,10 @@ MonoBehaviour:
   value:
     Condition: {fileID: 11400000, guid: c3733dbbbd82f8745bed5080ab9fd40a, type: 2}
     Action: {fileID: 11400000, guid: b4313e81a1170f44b89670471eeb91ea, type: 2}
+    Triggered: 0
+    IsInfinite: 0
+    BaseNumberOfCollisions: 1
+    CurrentNumberOfCollisions: 1
 --- !u!114 &5539086840128397284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +222,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543e9b09d91d693439aa7779235b555a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onTriggerEnter: 0
+  _onTriggerStay: 1
+  _onTriggerExit: 0
+  _onCollisionEnter: 0
+  _onCollisionStay: 0
+  _onCollisionExit: 0
 --- !u!114 &702370740998067746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +248,6 @@ MonoBehaviour:
       UnitType: 0
       DamageBonusPercent: 0
       DamageBonusFlat: 0
-      SpeedBonusPercent: 0
       CooldownReduction: 0
 --- !u!114 &111918871064009720
 MonoBehaviour:
@@ -412,7 +420,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1251754817
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3328242913338228825, guid: 56faa61c0738e9b43b0b5aa082c87bb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

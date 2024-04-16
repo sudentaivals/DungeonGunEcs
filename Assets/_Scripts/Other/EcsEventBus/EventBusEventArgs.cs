@@ -290,3 +290,8 @@ public class SetOutlineThicknessEventArgs : EventArgs
     public float Thickness {get;set;}
 }
 
+public class SetSfxVolumeEventArgs : EventArgs
+{
+    public float Volume {get;set;}
+}
+

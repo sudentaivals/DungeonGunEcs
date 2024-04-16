@@ -55,4 +55,6 @@ public enum GameplayEventType
     RegisterTimedAction,
     UseObject,
     SetOutlineThickness,
+    OnSfxVolumeChanged,
+    OnMusicVolumeChanged,
 }

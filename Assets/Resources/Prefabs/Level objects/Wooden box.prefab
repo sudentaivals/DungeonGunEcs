@@ -148,6 +148,10 @@ MonoBehaviour:
   value:
     Condition: {fileID: 11400000, guid: f33f4b1653c8c784d93f6929dbfed652, type: 2}
     Action: {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
+    Triggered: 0
+    IsInfinite: 0
+    BaseNumberOfCollisions: 1
+    CurrentNumberOfCollisions: 1
 --- !u!114 &564908047335405882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +199,7 @@ MonoBehaviour:
   value:
     GameObjectReference: {fileID: 6616555072776526421}
     ActionsOnReturnToPool:
-    - {fileID: 11400000, guid: 7fc93351cec719f45b38d11e7ac08b96, type: 2}
+    - {fileID: 11400000, guid: d32b392d31aed7a479fe9b2fde8619a5, type: 2}
     ComponentsResetList:
     - {fileID: 11400000, guid: 374e135d69c22ec4e883024d1fb7d85c, type: 2}
     - {fileID: 11400000, guid: 7375bd17da57f9a46a719317c6a24103, type: 2}

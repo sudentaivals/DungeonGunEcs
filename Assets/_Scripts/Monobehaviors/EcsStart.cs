@@ -25,6 +25,7 @@ public class EcsStart : MonoBehaviour
             .Add(new CameraGroupSystem())
             .Add(new NpcMovementSystem())
             .Add(new GlobalStatsSystem())
+            .Add(new SoundSystem())
             #endregion
             .Add(new MouseFollowSystem())
             .Add(new ObjectPoolSystem())

@@ -80,6 +80,8 @@ public class UsableObjectSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
         ref var pickupComponent = ref _pickupPool.Get(sender);
         if(!pickupComponent.UsableObjectIsSelected) return;
         ref var usableObjectComponent = ref _usableObjectPool.Get(pickupComponent.CurrentSelectedUsableObject);
-        if(usableObjectComponent.ActionOnUse != null) usableObjectComponent.ActionOnUse.Action(pickupComponent.CurrentSelectedUsableObject, null);
+        if(usableObjectComponent.ActionOnUse == null) return;
+        usableObjectComponent.ActionOnUse.Action(pickupComponent.CurrentSelectedUsableObject, null);
+        pickupComponent.UsableObjectIsSelected = false;
     }
 }

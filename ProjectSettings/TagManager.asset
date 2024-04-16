@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 419745975
+    locked: 0
+  - name: foreground
+    uniqueID: 1828406059
+    locked: 0
   - name: Corpse
     uniqueID: 329767617
     locked: 0
@@ -46,6 +52,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2873598015
+    locked: 0
+  - name: Vfx
+    uniqueID: 1215841739
     locked: 0
   - name: Projectiles
     uniqueID: 1251754817

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d751f17bda4ded418773e2d2c83dc2a, type: 3}
   m_Name: Set outline thickness to 0.75
   m_EditorClassIdentifier: 
-  _thickness: 0
+  _thickness: 0.75

@@ -16,7 +16,6 @@ MonoBehaviour:
   _affectedByCdReduction: 1
   _name: Pistol shot
   _id: 1
-  _castRange: 0
   _isAutomactic: 1
   _isUnique: 1
   _description: 
@@ -29,3 +28,4 @@ MonoBehaviour:
   _actionsOnUse:
   - {fileID: 11400000, guid: 25870df7310f04f49b4cfda52ddb28c4, type: 2}
   - {fileID: 11400000, guid: bd129e00e2fc7094bad957b59f920e71, type: 2}
+  - {fileID: 11400000, guid: 74bb24c644eac2c41b1b71a300a57982, type: 2}
