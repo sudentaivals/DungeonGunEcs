@@ -22,10 +22,10 @@ TagManager:
   - Level object
   - Level object piece
   - PickupObject
-  - 
-  - 
-  - 
-  - 
+  - Camera2
+  - Camera3
+  - Minimap
+  - Room
   - 
   - 
   - 
@@ -61,4 +61,22 @@ TagManager:
     locked: 0
   - name: Floating text
     uniqueID: 3656777187
+    locked: 0
+  - name: Ground
+    uniqueID: 3332964189
+    locked: 0
+  - name: Decoration1
+    uniqueID: 2904195573
+    locked: 0
+  - name: Decoration2
+    uniqueID: 1176137599
+    locked: 0
+  - name: Front
+    uniqueID: 3708994163
+    locked: 0
+  - name: Collision
+    uniqueID: 299158455
+    locked: 0
+  - name: Minimap
+    uniqueID: 2661351955
     locked: 0

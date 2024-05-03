@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6f17e581b891b458f50a149eda944e, type: 3}
+  m_Name: Room_Big room 1
+  m_EditorClassIdentifier: 
+  GuId: ab58e1b0d6f0a7d40945d7d3e83170c6
+  RoomPrefab: {fileID: 6565503516624185286, guid: a62796c983578ac42a3b74bdfc989173, type: 3}
+  PreviousRoomPrefab: {fileID: 6565503516624185286, guid: a62796c983578ac42a3b74bdfc989173, type: 3}
+  RoomNodeType: {fileID: 11400000, guid: 162398b3fd5787a46a22a418eb667e89, type: 2}
+  LowerBounds: {x: -14, y: -17}
+  UpperBounds: {x: 31, y: 23}
+  _doorwayList:
+  - Position: {x: 8, y: 23}
+    Orientaion: 0
+    DoorPrefab: {fileID: 0}
+    DoorwayStartCopyPosition: {x: 5, y: 23}
+    DoorwayCopyWidth: 5
+    DoorwayCopyHeight: 7
+    IsConnected: 0
+    IsUnavailable: 0
+  - Position: {x: 9, y: -17}
+    Orientaion: 1
+    DoorPrefab: {fileID: 0}
+    DoorwayStartCopyPosition: {x: 6, y: -12}
+    DoorwayCopyWidth: 5
+    DoorwayCopyHeight: 6
+    IsConnected: 0
+    IsUnavailable: 0
+  - Position: {x: -14, y: 4}
+    Orientaion: 2
+    DoorPrefab: {fileID: 0}
+    DoorwayStartCopyPosition: {x: -14, y: 9}
+    DoorwayCopyWidth: 6
+    DoorwayCopyHeight: 7
+    IsConnected: 0
+    IsUnavailable: 0
+  - Position: {x: 31, y: 5}
+    Orientaion: 3
+    DoorPrefab: {fileID: 0}
+    DoorwayStartCopyPosition: {x: 25, y: 10}
+    DoorwayCopyWidth: 7
+    DoorwayCopyHeight: 7
+    IsConnected: 0
+    IsUnavailable: 0
+  SpawnPositionsArray:
+  - {x: 1, y: 3}
+  - {x: 1, y: 1}
+  - {x: 13, y: 3}
+  - {x: 8, y: 1}
+  - {x: 21, y: 13}
+  - {x: -4, y: 14}
+  - {x: -7, y: -10}
+  - {x: 23, y: -10}
