@@ -14701,11 +14701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8831302228704863092, guid: 835d3bfbef39f444ead84fa017cbac49, type: 3}
       propertyPath: m_Size.x
-      value: 29
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8831302228704863092, guid: 835d3bfbef39f444ead84fa017cbac49, type: 3}
       propertyPath: m_Size.y
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8831302228704863092, guid: 835d3bfbef39f444ead84fa017cbac49, type: 3}
       propertyPath: m_Offset.x
