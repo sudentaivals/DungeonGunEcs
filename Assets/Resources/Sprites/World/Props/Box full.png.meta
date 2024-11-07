@@ -136,7 +136,7 @@ TextureImporter:
         width: 16
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,7 +149,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_1
+      name: Box piece_1
       rect:
         serializedVersion: 2
         x: 23
@@ -157,7 +157,7 @@ TextureImporter:
         width: 9
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_2
+      name: Box piece_2
       rect:
         serializedVersion: 2
         x: 34
@@ -178,7 +178,7 @@ TextureImporter:
         width: 7
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_3
+      name: Box piece_3
       rect:
         serializedVersion: 2
         x: 43
@@ -199,7 +199,7 @@ TextureImporter:
         width: 5
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_4
+      name: Box piece_4
       rect:
         serializedVersion: 2
         x: 27
@@ -220,7 +220,7 @@ TextureImporter:
         width: 5
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,7 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_5
+      name: Box piece_5
       rect:
         serializedVersion: 2
         x: 34
@@ -241,7 +241,7 @@ TextureImporter:
         width: 8
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_6
+      name: Box piece_6
       rect:
         serializedVersion: 2
         x: 44
@@ -262,7 +262,7 @@ TextureImporter:
         width: 10
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,7 +275,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_7
+      name: Box piece_8
       rect:
         serializedVersion: 2
         x: 56
@@ -283,7 +283,7 @@ TextureImporter:
         width: 4
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Box full_8
+      name: Box piece_7
       rect:
         serializedVersion: 2
         x: 62
@@ -304,7 +304,7 @@ TextureImporter:
         width: 4
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,6 +312,48 @@ TextureImporter:
       bones: []
       spriteID: 55d84f78f5a26b648a78640aee18dde1
       internalID: 330285032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Box_destroyed1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 20
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a82d7d52d85df4bb7d40fce7f4ffca
+      internalID: 2086682110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Box_destroyed2
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 20
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa9dd773f54343488ca5b178cfd0cb9
+      internalID: -1011722297
       vertices: []
       indices: 
       edges: []
@@ -327,14 +369,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Box full_5: -1241245404
-      Box full_6: 1531731154
-      Box full_3: 1160019178
-      Box full_2: 1835803970
-      Box full_7: 104492742
-      Box full_8: 330285032
-      Box full_1: -2113580640
-      Box full_4: 1764404085
+      Box piece_5: -1241245404
+      Box piece_3: 1160019178
+      Box piece_1: -2113580640
+      Box piece_6: 1531731154
+      Box piece_8: 104492742
+      Box_destroyed1: 2086682110
+      Box piece_4: 1764404085
+      Box piece_2: 1835803970
+      Box_destroyed2: -1011722297
+      Box piece_7: 330285032
       Box full_0: -194831349
   spritePackingTag: 
   pSDRemoveMatte: 0

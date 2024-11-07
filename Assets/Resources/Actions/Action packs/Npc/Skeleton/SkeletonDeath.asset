@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f1bfa90732bd44d96732e2fd6d9b70, type: 3}
+  m_Name: SkeletonDeath
+  m_EditorClassIdentifier: 
+  _condition: {fileID: 0}
+  _actions:
+  - {fileID: 11400000, guid: 14ac05217d0fd6c4fa709c61d50cca13, type: 2}
+  - {fileID: 11400000, guid: 6ef384d0120adaf46aceda16ccae68af, type: 2}
+  - {fileID: 11400000, guid: c44def0acf28bbb44819d6178fbac1b4, type: 2}
+  - {fileID: 11400000, guid: 4d4a77062b4f8fb4bb459513a9bfdbcb, type: 2}
+  - {fileID: 11400000, guid: 979c3260f6a840245ab234f6c75100bb, type: 2}
+  - {fileID: 11400000, guid: c724ed0844f09504f99e6485cc375824, type: 2}
+  - {fileID: 11400000, guid: 070298373cb1575428554784ae2b6202, type: 2}
+  - {fileID: 11400000, guid: 622fed8780b3a4d45b11ea2876320257, type: 2}
+  - {fileID: 11400000, guid: ec8c217d93d61634590e46e884832eb7, type: 2}

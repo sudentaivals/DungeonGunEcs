@@ -6,8 +6,8 @@ public class ActionWithProbability : GameAction
     [Range(0f, 1f)]
     [SerializeField] private float _probability;
     [SerializeField] private GameAction _action;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
-        if (Random.Range(0f, 1f) < _probability) _action.Action(senderEntity, takerEntity);
+        if (Random.Range(0f, 1f) < _probability) _action.Action(senderEntity, takerEntity, conditionAndActionArgs);
     }
 }

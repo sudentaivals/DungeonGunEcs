@@ -5,7 +5,7 @@ public class RotateObjectAction : GameAction
 {
     [SerializeField] bool _objectIsSender;
     [SerializeField] float _rotationValue;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var args = EventArgsObjectPool.GetArgs<RotateObjectEventArgs>();
         args.RotationValue = _rotationValue;

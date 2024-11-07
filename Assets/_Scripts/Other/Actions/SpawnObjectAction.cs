@@ -13,7 +13,7 @@ public class SpawnObjectAction : GameAction
     [SerializeField] InterfaceReference<IPositionType, ScriptableObject> _posType;
     [SerializeField] InterfaceReference<IRotationType, ScriptableObject> _rotType;
 
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         Vector3 position = GetPosition(senderEntity);
         Quaternion rotation = GetRotation(senderEntity);

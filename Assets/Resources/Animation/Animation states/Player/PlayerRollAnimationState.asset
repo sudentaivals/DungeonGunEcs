@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: PlayerRollAnimationState
   m_EditorClassIdentifier: 
   _id: 3
+  _name: PlayerRoll
   _animation: {fileID: 7400000, guid: ee77fee5371e6884696c96b3373d5561, type: 2}
   _animationStartCondition: {fileID: 0}
+  _actionOnAnimationExit: {fileID: 0}
   _actionOnAnimationEnd: {fileID: 0}
   _actionOnAnimationStart: {fileID: 0}
   _priority: 200
+  _isRepeatable: 0

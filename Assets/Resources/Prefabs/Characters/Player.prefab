@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 7640871432304729071}
   - component: {fileID: 1282441244}
   - component: {fileID: 1282441243}
+  - component: {fileID: 2644697425070714587}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -123,17 +124,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    PlayerInputNewSystem: {fileID: 11400000, guid: 3fae9aa0fb9f73447bcc83da317c0fae, type: 2}
     IsShooting: 0
     IsAutomaticShooting: 0
     IsAlternateShooting: 0
     HorizontalMovement: 0
     VerticalMovement: 0
     RollPressed: 0
-    RollDuration: 0
-    RollLenght: 0
-    CurrentRollDuration: 0
-    UsableObjectIsUsing: 0
+    UseObject: 0
     UsableObjectIsSwapped: 0
 --- !u!58 &7700623860649324579
 CircleCollider2D:
@@ -246,6 +243,7 @@ MonoBehaviour:
     OnSkillUse: []
     OnStart:
     - {fileID: 11400000, guid: ae49a7f2ca86bfb4084a8a4a89159575, type: 2}
+    - {fileID: 11400000, guid: dbebb2de11475ea4dac48291abe72db3, type: 2}
     OnDestroy: []
     StartEventsInvoked: 0
 --- !u!114 &7700623862119895451
@@ -307,11 +305,11 @@ MonoBehaviour:
     MaxHealthBonus: 0
     BaseHealth: 1000
     EvasionChance: 0
-    DamageReductionPercent: 0
-    DamageReductionFlat: 0
     OnDeath: []
     OnEvasion: []
     OnDamageTake: []
+    IncomingDamageModificators: []
+    ActionsOnDamageTake: []
 --- !u!114 &4477642065893138238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +439,22 @@ MonoBehaviour:
     Show: 1
     Name: Pickup radius
   _rectangles: []
+--- !u!114 &2644697425070714587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7700623860649324588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9870048ce536a4895b218696acb39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    DamageModificators:
+    - {fileID: 11400000, guid: ab1a603704391454aac984fc3657f69b, type: 2}
+    ActionsOnDamageDeal: []
 --- !u!1 &7700623860660709792
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +527,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1421369281
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -4583253144846247162, guid: 48d85d1ef51430e42b6aef57f02c863d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -597,7 +611,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1421369281
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_Sprite: {fileID: 1780578342, guid: a47294d8f066c634d90ee371916313ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -681,7 +695,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1421369281
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -1728513324, guid: a47294d8f066c634d90ee371916313ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

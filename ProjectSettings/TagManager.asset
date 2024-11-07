@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TGround
+  - TDecoration1
+  - TDecoration2
+  - TFront
+  - TCollision
+  - TCollisionAllowP
+  - TMinimap
   layers:
   - Default
   - TransparentFX
@@ -44,24 +51,6 @@ TagManager:
   - name: foreground
     uniqueID: 1828406059
     locked: 0
-  - name: Corpse
-    uniqueID: 329767617
-    locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 2873598015
-    locked: 0
-  - name: Vfx
-    uniqueID: 1215841739
-    locked: 0
-  - name: Projectiles
-    uniqueID: 1251754817
-    locked: 0
-  - name: Floating text
-    uniqueID: 3656777187
-    locked: 0
   - name: Ground
     uniqueID: 3332964189
     locked: 0
@@ -71,8 +60,26 @@ TagManager:
   - name: Decoration2
     uniqueID: 1176137599
     locked: 0
+  - name: Corpse
+    uniqueID: 329767617
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Vfx
+    uniqueID: 1215841739
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1251754817
+    locked: 0
+  - name: Player
+    uniqueID: 2873598015
+    locked: 0
   - name: Front
     uniqueID: 3708994163
+    locked: 0
+  - name: Floating text
+    uniqueID: 3656777187
     locked: 0
   - name: Collision
     uniqueID: 299158455

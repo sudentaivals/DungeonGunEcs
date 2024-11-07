@@ -6,7 +6,7 @@ using UnityEngine;
 public class TargetIsOutOfRange : BaseGameCondition
 {
     [SerializeField] bool _targetInRange;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var transformPool = EcsStart.World.GetPool<TransformComponent>();
         var targetPool = EcsStart.World.GetPool<NpcTargetComponent>();

@@ -14,7 +14,8 @@ public class TestAStar : MonoBehaviour
 
     void Update()
     {
-        var coordinates = GridManager.Instance.GetGridCoordinates(transform.position);
+        if(GridManager.Instance.CurrentGrid == null) return;
+        var coordinates = GridManager.Instance.CurrentGrid.GetGridCoordinates(transform.position);
         Debug.Log($"X: {coordinates.Item1}, Y: {coordinates.Item2}");
     }
 }

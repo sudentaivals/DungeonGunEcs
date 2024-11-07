@@ -13,7 +13,7 @@ public class ObstacleBetweenNpcAndTarget : BaseGameCondition
     [Tooltip("Data for Y for box")]
     [SerializeField] float _raycastShapeData2;
     private RaycastHit2D[] _obstacleColliders = new RaycastHit2D[1];
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var npcTargetPool = EcsStart.World.GetPool<NpcTargetComponent>();
         ref var npcTargetComp = ref npcTargetPool.Get(senderEntity);

@@ -308,6 +308,13 @@
       "dependencies": {},
       "hash": "3726d31b5acbdf683edb372ea1efb74a12321c17"
     },
+    "searous.serializableguid": {
+      "version": "https://github.com/Searous/Unity.SerializableGuid.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "4fc027cb717912f55159aecf514d02d6a12baecf"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

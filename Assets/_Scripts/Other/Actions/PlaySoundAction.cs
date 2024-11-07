@@ -7,7 +7,7 @@ public class PlaySoundAction : GameAction
     [SerializeField] AudioClip _sound;
     [Range(0f, 1f)]
     [SerializeField] float _soundVolume;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var args = EventArgsObjectPool.GetArgs<PlaySoundEventArgs>();
         args.Sfx = _sound;

@@ -6,7 +6,7 @@ public class ObjectIsImmune : BaseGameCondition
 {
     [SerializeField] bool _isImmune;
     [SerializeField] bool _isSender;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         int entity = -1;
         if(_isSender) entity = senderEntity;

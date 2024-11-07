@@ -5,7 +5,7 @@ public class RemoveComponentAction : GameAction
 {
     [SerializeField] bool _targetIsSender;
     [SerializeField] InterfaceReference<IRemoveComponent, ScriptableObject> _removeComponent;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if(_targetIsSender) _removeComponent.Value.RemoveComponent(senderEntity);
         else

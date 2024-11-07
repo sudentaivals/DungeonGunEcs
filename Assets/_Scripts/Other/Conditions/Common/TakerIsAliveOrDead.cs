@@ -5,7 +5,7 @@ using UnityEngine;
 public class TakerIsAliveOrDead : BaseGameCondition
 {
     [SerializeField] bool _isAlive;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var healthPool = EcsStart.World.GetPool<HealthComponent>();
         if (!healthPool.Has(takerEntity.Value)) return false;

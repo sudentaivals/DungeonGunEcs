@@ -8,6 +8,9 @@ public class GizmosHandler : MonoBehaviour
 {
     [SerializeField] List<CircleDrawHandler> _circles;
     [SerializeField] List<RectangleDrawHandler> _rectangles;
+
+    #region EDITOR
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if(_circles != null)
@@ -29,6 +32,8 @@ public class GizmosHandler : MonoBehaviour
             }
         }
     }
+#endif
+    #endregion
 }
 
 [Serializable]

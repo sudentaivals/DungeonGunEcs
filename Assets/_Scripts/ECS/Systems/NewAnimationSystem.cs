@@ -13,6 +13,7 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
     public void Destroy(IEcsSystems systems)
     {
         EcsEventBus.Unsubscribe(GameplayEventType.ChangeAnimation, ChangeAnimation);
+        EcsEventBus.Unsubscribe(GameplayEventType.ChangeAnimationByName, ChangeAnimationByName);
     }
 
     public void Init(IEcsSystems systems)
@@ -23,6 +24,7 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
                        .End();
         _newAnimationPool = world.GetPool<NewAnimationComponent>();
         EcsEventBus.Subscribe(GameplayEventType.ChangeAnimation, ChangeAnimation);
+        EcsEventBus.Subscribe(GameplayEventType.ChangeAnimationByName, ChangeAnimationByName);
     }
 
     public void Run(IEcsSystems systems)
@@ -120,5 +122,28 @@ public class NewAnimationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyst
         newAnimationComponent.ChangeSpeed = changeAnimArgs.ChangeAnimationSpeed;
         newAnimationComponent.DesireAnimationSpeed = changeAnimArgs.TargetAnimationSpeed;
         newAnimationComponent.TriggerExitActions = !changeAnimArgs.IgnoreExitActions;
+    }
+
+    private void ChangeAnimationByName(int sender, EventArgs args)
+    {
+        var changeAnimArgs = args as PlayAnimationByNameEventArgs;
+        ref var newAnimationComponent = ref _newAnimationPool.Get(sender);
+        BaseAnimationState animationState = null;
+        foreach(var state in newAnimationComponent.AnimationStates)
+        {
+            if(state.Name == changeAnimArgs.AnimationName)
+            {
+                animationState = state;
+                break;
+            }
+        }
+        if(animationState == null) return;
+
+        newAnimationComponent.LockedState = animationState.Id;
+        newAnimationComponent.LockedTill = Time.time + changeAnimArgs.LockTime;
+        newAnimationComponent.ChangeSpeed = changeAnimArgs.ChangeAnimationSpeed;
+        newAnimationComponent.DesireAnimationSpeed = changeAnimArgs.TargetAnimationSpeed;
+        newAnimationComponent.TriggerExitActions = !changeAnimArgs.IgnoreExitActions;
+
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SpikeMoveUpAState
   m_EditorClassIdentifier: 
   _id: 8
+  _name: Attack
   _animation: {fileID: 7400000, guid: 06700e7255fdb3544b843a9179d3ba87, type: 2}
   _animationStartCondition: {fileID: 0}
   _actionOnAnimationExit: {fileID: 11400000, guid: a67e8431518f68e44852686df10e85f5, type: 2}

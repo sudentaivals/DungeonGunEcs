@@ -5,7 +5,7 @@ using UnityEngine;
 public class TakerIsConcreteUnitType : BaseGameCondition
 {
     [SerializeField] List<UnitType> _acceptableUnitTypes;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         if (!takerEntity.HasValue) return false;
         var statsPool = EcsStart.World.GetPool<GlobalStatsComponent>();

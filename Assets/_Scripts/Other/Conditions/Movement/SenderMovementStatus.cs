@@ -6,7 +6,7 @@ using UnityEngine;
 public class SenderMovementStatus : BaseGameCondition
 {
     [SerializeField] bool _movementIsAvailable;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var movementStatsPool = EcsStart.World.GetPool<MovementStatsComponent>();
         ref var stats = ref movementStatsPool.Get(senderEntity);

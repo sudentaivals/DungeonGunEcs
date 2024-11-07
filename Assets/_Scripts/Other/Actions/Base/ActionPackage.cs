@@ -9,13 +9,13 @@ public class ActionPackage : GameAction
     [SerializeField] BaseGameCondition _condition;
     [SerializeField] List<GameAction> _actions;
 
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
-        var conditionsValid = _condition == null ? true : _condition.CheckCondition(senderEntity, takerEntity);
+        var conditionsValid = _condition == null ? true : _condition.CheckCondition(senderEntity, takerEntity, conditionAndActionArgs);
         if (!conditionsValid) return;
         foreach (var gameAction in _actions)
         {
-            gameAction.Action(senderEntity, takerEntity);
+            gameAction.Action(senderEntity, takerEntity, conditionAndActionArgs);
         }
     }
 }

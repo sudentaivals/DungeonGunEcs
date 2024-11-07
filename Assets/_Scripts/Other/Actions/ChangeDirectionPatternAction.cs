@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChangeDirectionPatternAction : GameAction
 {
     [SerializeField] InterfaceReference<IMovementDirection, ScriptableObject> _newMovementDirectionPattern;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var args = EventArgsObjectPool.GetArgs<ChangeMovementDirectionPatternEventArgs>();
         args.NewMovementDirectionPattern = _newMovementDirectionPattern;

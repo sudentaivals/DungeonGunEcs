@@ -7,7 +7,7 @@ public class AddOrRemoveSkill : GameAction
 {
     [SerializeField] int _skillId;
     [SerializeField] bool _removeSkill;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if(_removeSkill)
         {

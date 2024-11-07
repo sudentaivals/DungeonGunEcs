@@ -17,9 +17,10 @@ public class TakeObjectFromPoolAction : GameAction
     [SerializeField] float _rotationDelta;
 
     [SerializeField] float _distanceDelta;
+    [SerializeField] private Vector2 _spawnOffset = Vector2.zero;
 
 
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var args = EventArgsObjectPool.GetArgs<TakeObjectFromPoolEventArgs>();
         args.ObjectToSpawn = _prefab;
@@ -32,7 +33,7 @@ public class TakeObjectFromPoolAction : GameAction
     private Vector3 GetPosition(int senderEntity)
     {
         var delta = Random.insideUnitCircle * _distanceDelta;
-        return _posType.Value.GetPosition(senderEntity, null) + delta;
+        return _posType.Value.GetPosition(senderEntity, null) + delta + _spawnOffset;
     }
 
     private Quaternion GetRotation(int senderEntity)

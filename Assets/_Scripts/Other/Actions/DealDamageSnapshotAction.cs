@@ -5,11 +5,10 @@ using UnityEngine;
 public class DealDamageSnapshotAction : GameAction
 {
     [SerializeField] string DamageFormula;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if (takerEntity == null) return;
         Entity expr = DamageFormula;
-        var damage = (int)expr.EvalNumerical();
-        EcsEventBus.Publish(GameplayEventType.DealDamage, senderEntity, new DealDamageEventArgs(takerEntity.Value, damage, null, null));
+        var damage = (int)expr.EvalNumerical();    
     }
 }

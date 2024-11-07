@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCanPickupItemCondition : BaseGameCondition
 {
     [SerializeField] int _itemId;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         /*var playerItems = taker.GetComponent<PlayerItemSystem>();
         if (playerItems)

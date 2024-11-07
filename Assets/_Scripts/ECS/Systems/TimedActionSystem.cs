@@ -32,7 +32,7 @@ public class TimedActionSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyste
             if(timedActionData.Timer > 0) continue;
             if(_pooledTagPool.Has(timedActionData.SenderEntity)) continue;
             if(!_transformPool.Has(timedActionData.SenderEntity)) continue;
-            timedActionData.Action.Action(timedActionData.SenderEntity, timedActionData.TakerEntity);
+            timedActionData.Action.Action(timedActionData.SenderEntity, timedActionData.TakerEntity, timedActionData.Args);
         }
         _actionData.RemoveAll(a => a.Timer <= 0);
     }
@@ -41,7 +41,7 @@ public class TimedActionSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySyste
     {
         var registerTimedActionArgs = args as RegisterTimedActionEventArgs;
         var newActionData = new TimedActionData {Timer = registerTimedActionArgs.Timer, Action = registerTimedActionArgs.Action,
-        SenderEntity = sender, TakerEntity = registerTimedActionArgs.TakerEntity};
+        SenderEntity = sender, TakerEntity = registerTimedActionArgs.TakerEntity, Args = registerTimedActionArgs.Args};
         _actionData.Add(newActionData);
     }
 }
@@ -52,4 +52,6 @@ public class TimedActionData
     public GameAction Action;
     public int SenderEntity;
     public int? TakerEntity;
+
+    public ConditionAndActionArgs Args;
 }

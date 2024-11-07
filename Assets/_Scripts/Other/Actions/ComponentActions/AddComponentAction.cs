@@ -6,7 +6,7 @@ public class AddComponentAction : GameAction
     [SerializeField] bool _targetIsSender;
     [SerializeField] InterfaceReference<IAddComponent, ScriptableObject> _addComponent;
 
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if(_targetIsSender) _addComponent.Value.AddComponent(senderEntity);
         else

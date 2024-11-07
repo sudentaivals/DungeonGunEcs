@@ -4,7 +4,7 @@ public class EnableOrDisablePathfind : GameAction
 {
     [SerializeField] bool _targetIsSender;
     [SerializeField] bool _enable;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         int entity = senderEntity;
         if(!_targetIsSender)

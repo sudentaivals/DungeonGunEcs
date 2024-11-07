@@ -6,7 +6,7 @@ using UnityEngine;
 public class ChangeNpcMovement : GameAction
 {
     [SerializeField] bool _activateMovement;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var npcMovementStatusArgs = EventArgsObjectPool.GetArgs<SetNpcMovementStatusEventArgs>();
         npcMovementStatusArgs.NewNpcMovementStatus = _activateMovement;

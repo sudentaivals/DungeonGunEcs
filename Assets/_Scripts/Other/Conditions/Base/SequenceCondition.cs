@@ -7,13 +7,13 @@ public sealed class SequenceCondition : BaseGameCondition
 {
     [SerializeField] private List<BaseGameCondition> _conditions;
 
-    public sealed override bool CheckCondition(int senderEntity, int? takerEntity)
+    public sealed override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         if(_conditions == null || _conditions.Count == 0) return true;
 
         foreach (var condition in _conditions)
         {
-            if (!condition.CheckCondition(senderEntity, takerEntity)) return false;
+            if (!condition.CheckCondition(senderEntity, takerEntity, conditionArgs)) return false;
         }
 
         return true;

@@ -7,7 +7,7 @@ using UnityEngine;
 public class FindTarget : GameAction
 {
     [SerializeField] List<BaseGameCondition> _targetConditions;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var statsPool = EcsStart.World.GetPool<GlobalStatsComponent>();
         var transformPool = EcsStart.World.GetPool<TransformComponent>();

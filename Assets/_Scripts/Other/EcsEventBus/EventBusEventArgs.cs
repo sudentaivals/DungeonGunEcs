@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using AYellowpaper;
+using CustomAstar;
 using UnityEngine;
 
 public class EventBusEventArgs
@@ -18,6 +19,40 @@ public class LearnSkillEventArgs : EventArgs
     {
         SkillId = skillId;
     } */
+}
+
+public class AddOrRemoveDamageModificatorEventArgs : EventArgs
+{
+    public DamageModificatorContainer DamageModificatorContainer {get; set;}
+}
+
+public class TakeDamageEventArgs : EventArgs
+{
+    public int DamageDealerEntity {get;set;}
+    public DamageInformation DamageInformation {get;set;}
+}
+
+public class OnDamageTakeEventArgs : EventArgs
+{
+    public DamageInformation DamageInformation {get;set;}
+    public int DamageDealerEntity {get;set;}
+}
+
+public class AddOrRemoveOnDamageTakeActionEventArgs : EventArgs
+{
+    public GameAction NewOnDamageTakeAction {get;set;}
+}
+
+public class OnDamageDealEventArgs : EventArgs
+{
+    public int DamageTakerEntity {get;set;}
+    public DamageInformation DamageInformation {get;set;}
+    public int FinalDamage {get;set;}
+}
+
+public class AddOrRemoveOnDamageDealActionEventArgs : EventArgs
+{
+    public GameAction DamageAction {get;set;}
 }
 
 public class UseSkillEventArgs : EventArgs
@@ -73,19 +108,10 @@ public class RemoveSkillEventArgs : EventArgs
 
 public class DealDamageEventArgs : EventArgs
 {
-    public int DamageTakerEntity { get; }
-    public int Damage { get; }
-
-    public int? SenderEntity { get; }
-    public GlobalStatsComponent? SenderStats { get; }
-
-    public DealDamageEventArgs(int damageTakerEntity, int damage, GlobalStatsComponent? senderStats, int? senderEntity)
-    {
-        SenderEntity = senderEntity;
-        SenderStats = senderStats;
-        DamageTakerEntity = damageTakerEntity;
-        Damage = damage;
-    }
+    public DamageType DamageType {get;set;}
+    public int InitialDamage {get;set;}
+    public Guid DamageId {get;set;}
+    public int DamageTakerEntity { get; set;}
 }
 
 public class SpawnEntityEventArgs : EventArgs
@@ -196,6 +222,7 @@ public class SetNpcMovementStatusEventArgs : EventArgs
 
 public class PlayAnimationEventArgs : EventArgs
 {
+    public Guid AnimationGuid {get; set;}
     public int AnimationId {get; set;}
 
     public float LockTime {get; set;}
@@ -206,6 +233,19 @@ public class PlayAnimationEventArgs : EventArgs
 
     public bool IgnoreExitActions {get;set;}
 
+}
+
+public class PlayAnimationByNameEventArgs : EventArgs
+{
+    public string AnimationName {get; set;}
+
+    public float LockTime {get; set;}
+
+    public float TargetAnimationSpeed {get; set;}
+
+    public bool ChangeAnimationSpeed {get;set;}
+
+    public bool IgnoreExitActions {get;set;}
 }
 
 public class ReturnObjectToPoolEventArgs : EventArgs
@@ -281,8 +321,8 @@ public class RegisterTimedActionEventArgs : EventArgs
 {
     public int? TakerEntity {get;set;}
     public GameAction Action {get;set;}
-
     public float Timer {get;set;}
+    public ConditionAndActionArgs Args {get;set;}
 }
 
 public class SetOutlineThicknessEventArgs : EventArgs
@@ -293,5 +333,36 @@ public class SetOutlineThicknessEventArgs : EventArgs
 public class SetSfxVolumeEventArgs : EventArgs
 {
     public float Volume {get;set;}
+}
+
+public class ChangeGameStateEventArgs : EventArgs
+{
+    public GameStateSO NewGameState {get;set;}
+}
+
+public class SetPathfindGridEventArgs : EventArgs
+{
+    public PathfindingGrid NewPathfindingGrid {get;set;}
+}
+
+public class ChangeActiveRoomEventArgs : EventArgs
+{
+    public GameObject NewRoom {get;set;}
+    public List<Vector2> SpawnPoints {get;set;}
+}
+
+public class ChangeColliderStatusEventArgs : EventArgs
+{
+    public bool NewStatus {get;set;}
+}
+
+public class ChangeDoorStatusEventArgs : EventArgs
+{
+    public bool NewStatus {get;set;}
+}
+
+public class ChangeStatusEventArgs : EventArgs
+{
+    public bool NewStatus {get;set;}
 }
 

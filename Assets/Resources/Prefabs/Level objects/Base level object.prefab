@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 329767617
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -149,6 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 7426067005249150525}
+    SerializableGuid:
+      serializedGuid: d372c7f5-a101-417c-b9a3-e667f1817979
     Id: 2000
     Name: Base level object
     Description: Base object

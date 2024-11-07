@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: PlayerMoveAnimationState
   m_EditorClassIdentifier: 
   _id: 2
+  _name: PlayerMove
   _animation: {fileID: 7400000, guid: dca390e72c0819d4eabd7686119bdf0c, type: 2}
   _animationStartCondition: {fileID: 11400000, guid: efa018647074c614284eb2cf29e1ad6c, type: 2}
+  _actionOnAnimationExit: {fileID: 0}
   _actionOnAnimationEnd: {fileID: 0}
   _actionOnAnimationStart: {fileID: 0}
   _priority: 20

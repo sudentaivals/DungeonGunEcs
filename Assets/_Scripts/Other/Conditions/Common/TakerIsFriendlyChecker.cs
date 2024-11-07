@@ -6,7 +6,7 @@ using UnityEngine;
 public class TakerIsFriendlyChecker : BaseGameCondition
 {
     [SerializeField] bool _isFriendly;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         if (!takerEntity.HasValue) return false;
         var statsPool = EcsStart.World.GetPool<GlobalStatsComponent>();

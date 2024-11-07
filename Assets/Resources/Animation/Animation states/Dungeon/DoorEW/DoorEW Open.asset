@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a67e73db846f08e44a0706e7f45a0917, type: 3}
+  m_Name: DoorEW Open
+  m_EditorClassIdentifier: 
+  _id: 16
+  _animation: {fileID: 7400000, guid: 10dfb7dc5c190854d9c3e7bc8d86cbb8, type: 2}
+  _animationStartCondition: {fileID: 11400000, guid: bb49ec4a7be7bd249ad6cf7e1475e683, type: 2}
+  _actionOnAnimationExit: {fileID: 0}
+  _actionOnAnimationEnd: {fileID: 0}
+  _actionOnAnimationStart: {fileID: 11400000, guid: 1598c086d87a8ea489d87f4288ae4ccb, type: 2}
+  _priority: 20
+  _isRepeatable: 0

@@ -1,40 +1,38 @@
 using Leopotam.EcsLite;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunRotationSystem : IEcsRunSystem, IEcsInitSystem
+public class GunRotationSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
 {
     private Camera _mainCamera;
+    private EcsFilter _filter;
+    private EcsPool<TransformComponent> _transformPool;
+    private EcsPool<GunRotationComponent> _gunRotationPool;
     public void Init(IEcsSystems systems)
     {
         _mainCamera = Camera.main;
 
         var world = systems.GetWorld();
+        _filter = world.Filter<GunRotationComponent>().End();
+        _transformPool = world.GetPool<TransformComponent>();
+        _gunRotationPool = world.GetPool<GunRotationComponent>();
 
-        var filter = world.Filter<GunRotationComponent>().End();
-        var gunRotationPool = world.GetPool<GunRotationComponent>();
+        EcsEventBus.Subscribe(GameplayEventType.UnparentGun, UnparentGun);
+    }
 
-        foreach (int entity in filter)
-        {
-            ref var gunRotation = ref gunRotationPool.Get(entity);
-            gunRotation.Gun.parent = null;
-        }
-
+    public void Destroy(IEcsSystems systems)
+    {
+        EcsEventBus.Unsubscribe(GameplayEventType.UnparentGun, UnparentGun);
     }
 
     public void Run(IEcsSystems systems)
     {
-        var world = systems.GetWorld();
-
-        var filter = world.Filter<GunRotationComponent>().End();
-        var transformPool = world.GetPool<TransformComponent>();
-        var gunRotationPool = world.GetPool<GunRotationComponent>();
-
-        foreach (int entity in filter)
+        foreach (int entity in _filter)
         {
-            ref var gunRotation = ref gunRotationPool.Get(entity);
-            ref var transform = ref transformPool.Get(entity);
+            ref var gunRotation = ref _gunRotationPool.Get(entity);
+            ref var transform = ref _transformPool.Get(entity);
 
 
             var testVector = new Vector2(1f, 0f);
@@ -58,8 +56,15 @@ public class GunRotationSystem : IEcsRunSystem, IEcsInitSystem
                 gunRotation.Gun.localScale = new Vector3(Mathf.Sign(gunRotation.Gun.localScale.x) > 0 ? gunRotation.Gun.localScale.x * -1 : gunRotation.Gun.localScale.x, gunRotation.Gun.localScale.y, gunRotation.Gun.localScale.z);
 
             }
-
         }
+    }
 
+    private void UnparentGun(int sender, EventArgs args)
+    {
+        if(_gunRotationPool == null) return;
+        if(!_gunRotationPool.Has(sender)) return;
+
+        ref var gunRotation = ref _gunRotationPool.Get(sender);
+        gunRotation.Gun.parent = null;
     }
 }

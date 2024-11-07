@@ -1,0 +1,10 @@
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "My Assets/DamageMod/Modificators/New damage mod")]
+public class #SCRIPTNAME# : DamageModificator
+{
+    public override void ModifyDamage(ref DamageInformation damageInformation)
+    {
+        return;
+    }
+}

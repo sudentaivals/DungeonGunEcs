@@ -4,7 +4,7 @@ using UnityEngine;
 public class SetRandomSpriteAction : GameAction
 {
     [SerializeField] List<Sprite> _sprites;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         int index = Random.Range(0, _sprites.Count);
         var args = EventArgsObjectPool.GetArgs<ChangeSpriteEventArgs>();

@@ -30,6 +30,7 @@ public class DungeonLevelSO : ScriptableObject
         bool isSNCorridor = false;
         bool isEWCorridor = false;
 
+        //check templates
         foreach (RoomTemplateSO roomTemplate in RoomTemplates)
         {
             if(roomTemplate == null) return;
@@ -53,6 +54,7 @@ public class DungeonLevelSO : ScriptableObject
             Debug.Log("In" + this.name.ToString() + " there is no entrance");
         }
 
+        //check node graphs
         foreach (RoomNodeGraphSO roomNodeGraph in RoomNodeGraphList)
         {
             if(roomNodeGraph == null) return;
@@ -72,7 +74,7 @@ public class DungeonLevelSO : ScriptableObject
                         break;
                     }
                 }
-                if(isRoomNodeTypeFound) Debug.Log("In" + this.name.ToString() + " : No room template " + roomNodeSo.RoomNodeType.name + " found for node graph " + 
+                if(!isRoomNodeTypeFound) Debug.Log("In" + this.name.ToString() + " : No room template " + roomNodeSo.RoomNodeType.name + " found for node graph " + 
                     roomNodeGraph.name.ToString());
             }
         }

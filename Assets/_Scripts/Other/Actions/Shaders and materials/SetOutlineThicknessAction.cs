@@ -3,7 +3,7 @@ using UnityEngine;
 public class SetOutlineThicknessAction : GameAction
 {
     [SerializeField] private float _thickness;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
        var args = EventArgsObjectPool.GetArgs<SetOutlineThicknessEventArgs>();
        args.Thickness = _thickness;

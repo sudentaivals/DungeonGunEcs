@@ -34,6 +34,7 @@ GameObject:
   - component: {fileID: 1852014066565803537}
   - component: {fileID: -843684087840235134}
   - component: {fileID: 46058162981477517}
+  - component: {fileID: -8716884743556510099}
   m_Layer: 12
   m_Name: Skeleon
   m_TagString: Untagged
@@ -180,13 +181,14 @@ MonoBehaviour:
     MaxHealthBonus: 0
     BaseHealth: 20
     EvasionChance: 0
-    DamageReductionPercent: 0
-    DamageReductionFlat: 0
     OnDeath:
-    - {fileID: 11400000, guid: 018cc7c4e4e03af4f9fb348b566c2575, type: 2}
+    - {fileID: 11400000, guid: 8fff6b64d1b9fdf4eb9232c59fe0499d, type: 2}
     - {fileID: 11400000, guid: 1a35974bc56aad24b95145f98b0745b4, type: 2}
     OnEvasion: []
     OnDamageTake: []
+    IncomingDamageModificators:
+    - {fileID: 11400000, guid: 24a3bc4ceb26fc04bad04454f19f9c0d, type: 2}
+    ActionsOnDamageTake: []
 --- !u!114 &2736353337785437070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +451,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 2736353337785437072}
+    SerializableGuid:
+      serializedGuid: 630d6473-1545-4cdb-bed2-a367275b66d4
     Id: 100
     Name: Skeleton
     Description: Base enemy. Shoots purple spheres.
@@ -465,6 +469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _poolId: 100
+  _serializableGuid:
+    serializedGuid: 630d6473-1545-4cdb-bed2-a367275b66d4
 --- !u!114 &46058162981477517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +489,21 @@ MonoBehaviour:
     ComponentsResetList:
     - {fileID: 11400000, guid: 374e135d69c22ec4e883024d1fb7d85c, type: 2}
     - {fileID: 11400000, guid: 7375bd17da57f9a46a719317c6a24103, type: 2}
+--- !u!114 &-8716884743556510099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736353337785437072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9870048ce536a4895b218696acb39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    DamageModificators: []
+    ActionsOnDamageDeal: []
 --- !u!1 &2736353338062552166
 GameObject:
   m_ObjectHideFlags: 0

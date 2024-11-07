@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Doorway
+public class Doorway : IDeepClonable<Doorway>
 {
     public Vector2Int Position;
     public Orientation Orientaion;
@@ -21,4 +21,18 @@ public class Doorway
     [HideInInspector] public bool IsConnected = false;
     [HideInInspector] public bool IsUnavailable = false;
 
+    public Doorway DeepClone()
+    {
+        Doorway doorway = new();
+
+        doorway.Position = Position;
+        doorway.Orientaion = Orientaion;
+        doorway.DoorPrefab = DoorPrefab;
+        doorway.DoorwayStartCopyPosition = DoorwayStartCopyPosition;
+        doorway.DoorwayCopyWidth = DoorwayCopyWidth;
+        doorway.DoorwayCopyHeight = DoorwayCopyHeight;
+        doorway.IsConnected = IsConnected;
+        doorway.IsUnavailable = IsUnavailable;
+        return doorway;
+    }
 }

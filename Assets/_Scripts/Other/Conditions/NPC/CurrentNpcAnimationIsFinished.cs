@@ -9,7 +9,7 @@ public class CurrentNpcAnimationIsFinished : BaseGameCondition
     [SerializeField] bool _isFinished;
 
     private readonly int _animationLayer = 0;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var world = EcsStart.World;
         var animationPool = world.GetPool<AnimationComponent>();

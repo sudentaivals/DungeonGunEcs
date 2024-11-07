@@ -1,0 +1,9 @@
+using UnityEngine;
+[CreateAssetMenu(menuName = "My Assets/DamageMod/New custom damage variable")]
+public class #SCRIPTNAME# : CustomDamageVariable
+{
+    public override int GetDamageValue(int senderEntity, int? takerEntity)
+    {
+        return true;
+    }
+}

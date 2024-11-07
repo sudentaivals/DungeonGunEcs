@@ -7,7 +7,7 @@ public class SwitchMovementAction : GameAction
 {
     [SerializeField] bool _setMovementAvailable;
     [SerializeField] bool _targetIsSender;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var setMovementArgs = EventArgsObjectPool.GetArgs<SetMovementEventArgs>();
         setMovementArgs.NewMovementStatus = _setMovementAvailable;

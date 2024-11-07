@@ -291,6 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _poolId: 0
+  _serializableGuid:
+    serializedGuid: 9d9098ac-b933-4f45-8a4c-df4a76f284ff
 --- !u!114 &8342296683693854818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +311,6 @@ MonoBehaviour:
     UnitType: 0
     DamageBonusPercent: 0
     DamageBonusFlat: 0
-    SpeedBonusPercent: 0
     CooldownReduction: 0
 --- !u!114 &8342296683693854817
 MonoBehaviour:
@@ -337,6 +338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 8342296683693854816}
+    SerializableGuid:
+      serializedGuid: 9d9098ac-b933-4f45-8a4c-df4a76f284ff
     Id: 0
     Name: 
     Description: 

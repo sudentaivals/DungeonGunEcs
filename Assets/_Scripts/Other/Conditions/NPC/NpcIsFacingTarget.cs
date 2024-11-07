@@ -8,7 +8,7 @@ public class NpcIsFacingTarget : BaseGameCondition
 {
     [SerializeField] bool _isFacingTarget;
 
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var npcTargetPool = EcsStart.World.GetPool<NpcTargetComponent>();
         ref var npcTarget = ref npcTargetPool.Get(senderEntity);

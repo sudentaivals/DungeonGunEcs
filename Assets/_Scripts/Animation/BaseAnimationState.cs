@@ -4,11 +4,15 @@ using UnityEngine;
 public class BaseAnimationState : ScriptableObject
 {
     [SerializeField] int _id;
+    [SerializeField] private string _name;
     [SerializeField] AnimationClip _animation;
     [SerializeField] BaseGameCondition _animationStartCondition;
     [Header("Actions")]
+    [Tooltip("Actions on exit, triggers when change animation, even if animation not ended.")]
     [SerializeField] GameAction _actionOnAnimationExit;
+    [Tooltip("End of animation actions, if looped all actions will perform at last keyframe. If not looped, this actions will trigger only once.")]
     [SerializeField] GameAction _actionOnAnimationEnd;
+    [Tooltip("Start of animation actions, if looped all actions will perform at first keyframe. If not looped, this actions will trigger only once.")]
     [SerializeField] GameAction _actionOnAnimationStart;
     [Tooltip("Higher priority plays first")]
     [SerializeField] int _priority;
@@ -17,6 +21,8 @@ public class BaseAnimationState : ScriptableObject
     public bool IsRepeatable => _isRepeatable;
     public AnimationClip Animation => _animation;
     public int Priority => _priority;
+
+    public string Name => _name;
 
     public bool CheckStartCondition(int sender)
     {

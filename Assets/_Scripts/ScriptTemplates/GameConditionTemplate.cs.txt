@@ -2,7 +2,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "My Assets/Conditions/New game condition")]
 public class #SCRIPTNAME# : BaseGameCondition
 {
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         return true;
     }

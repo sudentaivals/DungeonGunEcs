@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomNodeTypeList: {fileID: 11400000, guid: 0e07d55a0d5066046b6e689bffae2662, type: 2}
+  GameStateList: {fileID: 11400000, guid: e925fa34994300942a6145d8a0340d9c, type: 2}
+  DimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
+  VariableMaterial: {fileID: 2100000, guid: a4ea43fe7ddf099428e90d7b7ac44139, type: 2}

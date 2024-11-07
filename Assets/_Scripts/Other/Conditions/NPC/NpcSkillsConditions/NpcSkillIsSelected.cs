@@ -8,7 +8,7 @@ public class NpcSkillIsSelected : BaseGameCondition
 {
     [SerializeField] bool _isSkillSelected;
 
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var npcSkillSelectionComponent = EcsStart.World.GetPool<NpcSkillSelectionComponent>();
         if(!npcSkillSelectionComponent.Has(senderEntity)) return false;

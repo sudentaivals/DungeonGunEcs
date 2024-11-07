@@ -9,7 +9,7 @@ public class AddStatusEffectAction : GameAction
     [SerializeField] bool _overrideDuration = false;
     [SerializeField] float _newDuration;
 
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         var args = EventArgsObjectPool.GetArgs<AddStatusEffectEventArgs>();
         args.EffectShell = _statusEffect;

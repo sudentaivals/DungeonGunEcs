@@ -12,16 +12,14 @@ public struct HealthComponent
     public int BaseHealth;
 
     //evasion
-    public float GetClampedEvasion => Mathf.Clamp(EvasionChance, 0f, 0.95f);
+    public float GetClampedEvasion => Mathf.Clamp(EvasionChance, 0f, Settings.MaxEvasionChance);
     public float EvasionChance;
-
-    //damage reduction
-    public float DamageReductionPercent;
-    public int DamageReductionFlat;
 
     //events
     public List<GameAction> OnDeath;
     public List<GameAction> OnEvasion;
     public List<GameAction> OnDamageTake;
+    public List<DamageModificatorContainer> IncomingDamageModificators;
+    public List<GameAction> ActionsOnDamageTake;
 
 }

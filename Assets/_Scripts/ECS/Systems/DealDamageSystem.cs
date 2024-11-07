@@ -1,94 +1,120 @@
 using Leopotam.EcsLite;
 using System;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 
-public class DealDamageSystem : IEcsRunSystem, IEcsInitSystem, IEcsDestroySystem
+public class DealDamageSystem : IEcsInitSystem, IEcsDestroySystem
 {
-    private Queue<DamageData> _damageQueue;
-    private EcsPool<GlobalStatsComponent> _statsPool;
-    private EcsPool<EventsComponent> _eventsPool;
-    private EcsPool<HealthComponent> _healthPool;
-    private void AddDamageToQueue(int senderEntity, EventArgs args)
+    private EcsPool<DamageDealComponent> _damageDealPool;
+    private EcsPool<SummonedObjectComponent> _summonedObjectPool;
+    private DamageInformation _damageInformation;
+    private void DealDamage(int damageDealerEntity, EventArgs args)
     {
         var damageArgs = args as DealDamageEventArgs;
-        if (!_healthPool.Has(damageArgs.DamageTakerEntity)) return;
-        var newDamageData = new DamageData(damageArgs.SenderEntity, damageArgs.SenderStats, damageArgs.DamageTakerEntity, damageArgs.Damage);
-        _damageQueue.Enqueue(newDamageData);
+        ref var damageDealComponent = ref _damageDealPool.Get(damageDealerEntity);
+        //check for summoned object
+        if(_summonedObjectPool.Has(damageDealerEntity))
+        {
+            ref var damageDealerSummonedObjectComponent = ref _summonedObjectPool.Get(damageDealerEntity);
+            damageDealComponent = ref _damageDealPool.Get(damageDealerSummonedObjectComponent.MasterId);
+        }
+        _damageInformation.UpdateVariables(damageArgs.InitialDamage, damageArgs.DamageId, damageArgs.DamageType);
+        //damage modifications
+        var damageModArgs = ConditionAndActionArgsPool.GetArgs<DamageArgs>();
+        damageModArgs.DamageInformation = _damageInformation;
+        foreach (var damageMod in damageDealComponent.DamageModificators)
+        {
+            if(damageMod == null) continue;
+            damageMod.ModifyDamage(damageArgs.DamageTakerEntity, damageDealerEntity, damageModArgs);
+        }
+        //critical hit calculation
+        var randomNumber = UnityEngine.Random.Range(0f, 1f);
+        var criticalHitChance = _damageInformation.CriticalHitBonus;
+        bool isCriticalHit = randomNumber < criticalHitChance;
+        if(isCriticalHit) _damageInformation.IsCriticalHit = true;
+
+        //send take damage event
+        var takeDamageEventArgs = EventArgsObjectPool.GetArgs<TakeDamageEventArgs>();
+        takeDamageEventArgs.DamageInformation = _damageInformation;
+        takeDamageEventArgs.DamageDealerEntity = damageDealerEntity;
+
+        EcsEventBus.Publish(GameplayEventType.TakeDamage, damageArgs.DamageTakerEntity, takeDamageEventArgs);
+    }
+
+    private void AddDamageModificator(int senderEntity, EventArgs args)
+    {
+        var damageModArgs = args as AddOrRemoveDamageModificatorEventArgs;
+        if(!_damageDealPool.Has(senderEntity)) return;
+        ref var damageDealComponent = ref _damageDealPool.Get(senderEntity);
+        damageDealComponent.DamageModificators.Add(damageModArgs.DamageModificatorContainer);
+    }
+
+    private void AddNewOnDamageEvent(int senderEntity, EventArgs args)
+    {
+        if(!_damageDealPool.Has(senderEntity)) return;
+        var onDamageDealArgs = args as AddOrRemoveOnDamageDealActionEventArgs;
+        ref var damageDealComponent = ref _damageDealPool.Get(senderEntity);
+        damageDealComponent.ActionsOnDamageDeal.Add(onDamageDealArgs.DamageAction);
+    }
+
+    private void RemoveDamageModificator(int senderEntity, EventArgs args)
+    {
+        if(!_damageDealPool.Has(senderEntity)) return;
+        var damageModArgs = args as AddOrRemoveDamageModificatorEventArgs;
+        ref var damageDealComponent = ref _damageDealPool.Get(senderEntity);
+        if(damageModArgs.DamageModificatorContainer == null) return;
+        if(damageDealComponent.DamageModificators.Contains(damageModArgs.DamageModificatorContainer))
+        {
+            damageDealComponent.DamageModificators.Remove(damageModArgs.DamageModificatorContainer);
+        }
+    }
+
+    private void RemoveOnDamageEvent(int senderEntity, EventArgs args)
+    {
+        if(!_damageDealPool.Has(senderEntity)) return;
+        var onDamageDealArgs = args as AddOrRemoveOnDamageDealActionEventArgs;
+        ref var damageDealComponent = ref _damageDealPool.Get(senderEntity);
+        if(damageDealComponent.ActionsOnDamageDeal.Contains(onDamageDealArgs.DamageAction))
+        {
+            damageDealComponent.ActionsOnDamageDeal.Remove(onDamageDealArgs.DamageAction);
+        }
+    }
+
+    private void OnEntityDamageDeal(int senderEntity, EventArgs args)
+    {
+        var onDamageDealArgs = args as OnDamageDealEventArgs;
+        if(!_damageDealPool.Has(senderEntity)) return;
+        ref var damageDealComponent = ref _damageDealPool.Get(senderEntity);
+        var damageAndConditionArg = ConditionAndActionArgsPool.GetArgs<DamageArgs>();
+        damageAndConditionArg.DamageInformation = onDamageDealArgs.DamageInformation;
+        damageDealComponent.ActionsOnDamageDeal.ForEach((damageDealAction) =>
+        {
+            if(damageDealAction == null) return;
+            damageDealAction.Action(senderEntity, onDamageDealArgs.DamageTakerEntity, damageAndConditionArg);
+        });
     }
 
     public void Destroy(IEcsSystems systems)
     {
-        _damageQueue = null;
-        _statsPool = null;
-        _eventsPool = null;
-        EcsEventBus.Unsubscribe(GameplayEventType.DealDamage, AddDamageToQueue);
+        EcsEventBus.Unsubscribe(GameplayEventType.DealDamage, DealDamage);
+        EcsEventBus.Unsubscribe(GameplayEventType.AddNewDamageModificator, AddDamageModificator);
+        EcsEventBus.Unsubscribe(GameplayEventType.OnEntityDamageDeal, OnEntityDamageDeal);
+        EcsEventBus.Unsubscribe(GameplayEventType.AddNewOnDamageDealAction, AddNewOnDamageEvent);
+        EcsEventBus.Unsubscribe(GameplayEventType.RemoveOnDamageEvent, RemoveOnDamageEvent);
+        EcsEventBus.Unsubscribe(GameplayEventType.RemoveDamageModificator, RemoveDamageModificator);
     }
 
     public void Init(IEcsSystems systems)
     {
-        _damageQueue = new Queue<DamageData>();
         var world = systems.GetWorld();
-        _statsPool = world.GetPool<GlobalStatsComponent>();
-        _eventsPool = world.GetPool<EventsComponent>();
-        _healthPool = world.GetPool<HealthComponent>();
+        _damageDealPool = world.GetPool<DamageDealComponent>();
+        _summonedObjectPool = world.GetPool<SummonedObjectComponent>();
+        _damageInformation = new();
 
-        EcsEventBus.Subscribe(GameplayEventType.DealDamage, AddDamageToQueue);
-    }
-
-    public void Run(IEcsSystems systems)
-    {
-        while (_damageQueue.TryDequeue(out var result))
-        {
-            //get stats and events comp
-            ref var takerEvents = ref _eventsPool.Get(result.TakerEntity);
-            ref var takerStats = ref _statsPool.Get(result.TakerEntity);
-            if(!_healthPool.Has(result.TakerEntity)) continue;
-            ref var takerHealth = ref _healthPool.Get(result.TakerEntity);
-            if(!takerHealth.IsAlive) continue;
-            GlobalStatsComponent senderStats = new GlobalStatsComponent();
-            if(result.SenderStats == null)
-            {
-                senderStats = _statsPool.Get(result.SenderEntity.Value);
-            }
-            else
-            {
-                senderStats = result.SenderStats.Value;
-            }
-            //evasion
-            var randomNumber = UnityEngine.Random.Range(0f, 1f);
-            if(randomNumber < takerHealth.GetClampedEvasion)
-            {
-                //takerEvents.OnEvasion?.Invoke();
-                EcsEventBus.Publish(GameplayEventType.CreateFloatingText, result.TakerEntity, new CreateFloatingTextEventArgs("Evade", Color.white, new Vector2(1, -0.5f)));
-                takerHealth.OnEvasion.ForEach(evasionAction => evasionAction.Action(result.TakerEntity, result.SenderEntity));
-                continue;
-            }
-            //hit - calculate damage
-            var damage = (float)(result.Damage + senderStats.DamageBonusFlat) * (1f + senderStats.DamageBonusPercent);
-            var damageAfterReduction = ((int)damage - takerHealth.DamageReductionFlat) * (1 - takerHealth.DamageReductionPercent);
-            var clampedDamage = Mathf.RoundToInt(Mathf.Clamp(damageAfterReduction, 0f, float.MaxValue));
-            EcsEventBus.Publish(GameplayEventType.CreateFloatingText, result.TakerEntity, new CreateFloatingTextEventArgs($"-{clampedDamage}", Color.cyan, new Vector2(1, 0.5f)));
-            takerHealth.CurrentHealth -= Mathf.RoundToInt(clampedDamage);
-            takerHealth.OnDamageTake.ForEach(onDamageTakeEvent => onDamageTakeEvent.Action(result.TakerEntity, result.SenderEntity));
-            if(takerHealth.IsAlive) continue;
-            takerHealth.OnDeath.ForEach(onDeathEvent => onDeathEvent.Action(result.TakerEntity, result.SenderEntity));
-
-        }
-    }
-}
-
-public struct DamageData
-{
-    public int TakerEntity;
-    public int Damage;
-    public GlobalStatsComponent? SenderStats;
-    public int? SenderEntity;
-    public DamageData(int? senderEntity, GlobalStatsComponent? senderStats, int takerEntity, int damage)
-    {
-        SenderEntity = senderEntity;
-        SenderStats = senderStats;
-        TakerEntity = takerEntity;
-        Damage = damage;
+        EcsEventBus.Subscribe(GameplayEventType.DealDamage, DealDamage);
+        EcsEventBus.Subscribe(GameplayEventType.AddNewDamageModificator, AddDamageModificator);
+        EcsEventBus.Subscribe(GameplayEventType.OnEntityDamageDeal, OnEntityDamageDeal);
+        EcsEventBus.Subscribe(GameplayEventType.AddNewOnDamageDealAction, AddNewOnDamageEvent);
+        EcsEventBus.Subscribe(GameplayEventType.RemoveOnDamageEvent, RemoveOnDamageEvent);
+        EcsEventBus.Subscribe(GameplayEventType.RemoveDamageModificator, RemoveDamageModificator);
     }
 }

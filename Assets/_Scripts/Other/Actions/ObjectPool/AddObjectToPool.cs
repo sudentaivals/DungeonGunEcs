@@ -4,7 +4,7 @@ using UnityEngine;
 public class AddObjectToPool : GameAction
 {
     [SerializeField] private bool _targetIsSender = true;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         int entity = senderEntity;
         if(!_targetIsSender)

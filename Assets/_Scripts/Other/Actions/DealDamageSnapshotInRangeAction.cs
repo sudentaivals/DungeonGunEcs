@@ -7,7 +7,7 @@ public class DealDamageSnapshotInRangeAction : GameAction
     [SerializeField] string DamageFormula;
     [SerializeField] float _radius;
 
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         /*//convert dmg into formula
         Entity expr = DamageFormula;

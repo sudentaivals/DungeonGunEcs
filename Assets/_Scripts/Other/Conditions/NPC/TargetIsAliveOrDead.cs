@@ -6,7 +6,7 @@ using UnityEngine;
 public class TargetIsAliveOrDead : BaseGameCondition
 {
     [SerializeField] bool _isAlive;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var targetPool = EcsStart.World.GetPool<NpcTargetComponent>();
         ref var npcTarget = ref targetPool.Get(senderEntity);

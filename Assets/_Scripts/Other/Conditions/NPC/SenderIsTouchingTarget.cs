@@ -9,7 +9,7 @@ public class SenderIsTouchingTarget : BaseGameCondition
 {
     [SerializeField] bool _isTouchingTarget;
 
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var targetPool = EcsStart.World.GetPool<NpcTargetComponent>();
         ref var npcTarget = ref targetPool.Get(senderEntity);

@@ -9,7 +9,7 @@ public class AddSenderToCinemachineGroupAction : GameAction
     [SerializeField] float _radius;
 
     [SerializeField] bool _remove;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if(_remove)
         {

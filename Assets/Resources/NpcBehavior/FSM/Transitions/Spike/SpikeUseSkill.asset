@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: SpikeUseSkill
   m_EditorClassIdentifier: 
   State: {fileID: 11400000, guid: 61a4e63dc5c4f694091b1d185cfbfdf7, type: 2}
-  Conditions:
-  - {fileID: 11400000, guid: bd4f6ad48df8d6543948b26ce1e54470, type: 2}
+  Condition: {fileID: 11400000, guid: 1dda39b18c324bf4690255e9fd872146, type: 2}

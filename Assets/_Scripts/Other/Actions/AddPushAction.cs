@@ -9,7 +9,7 @@ public class AddPushAction : GameAction
     [SerializeField] bool _targetIsSender;
 
     [SerializeField] bool _isImpulse;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if (!_targetIsSender && !takerEntity.HasValue) return;
         var rotation = _rotationType.Value.GetRotation(senderEntity, takerEntity);

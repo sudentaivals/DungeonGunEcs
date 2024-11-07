@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f1bfa90732bd44d96732e2fd6d9b70, type: 3}
+  m_Name: Barell crush pack
+  m_EditorClassIdentifier: 
+  _condition: {fileID: 0}
+  _actions:
+  - {fileID: 11400000, guid: b2f44543a2412174dae14a1295d72d92, type: 2}
+  - {fileID: 11400000, guid: 0ed4386e78ddc6744a7272dd1d01192b, type: 2}
+  - {fileID: 11400000, guid: 0ed4386e78ddc6744a7272dd1d01192b, type: 2}
+  - {fileID: 11400000, guid: b69bffe5cf2c3fa4481246afde7f3a6d, type: 2}
+  - {fileID: 11400000, guid: b69bffe5cf2c3fa4481246afde7f3a6d, type: 2}
+  - {fileID: 11400000, guid: a7221ead587d31a48bf7bc36b9e57f04, type: 2}
+  - {fileID: 11400000, guid: a7221ead587d31a48bf7bc36b9e57f04, type: 2}
+  - {fileID: 11400000, guid: 72d79af74a9ede7418dd6938bae91d6d, type: 2}
+  - {fileID: 11400000, guid: 72d79af74a9ede7418dd6938bae91d6d, type: 2}
+  - {fileID: 11400000, guid: cbbdd121ab65cc24fb9eadb3473c6b74, type: 2}
+  - {fileID: 11400000, guid: cbbdd121ab65cc24fb9eadb3473c6b74, type: 2}
+  - {fileID: 11400000, guid: 988914352f7241f4f830b72fc9853e5f, type: 2}
+  - {fileID: 11400000, guid: a514567dfaf89a44e929c276f8a580de, type: 2}

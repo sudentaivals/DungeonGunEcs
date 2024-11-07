@@ -6,7 +6,7 @@ public class ObjectIsMoving : BaseGameCondition
     [SerializeField] bool _isMovingExists;
     [SerializeField] bool _targetIsSender;
     private float MinSpeedTreshold => float.Epsilon;
-    public override bool CheckCondition(int senderEntity, int? takerEntity)
+    public override bool CheckCondition(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionArgs = null)
     {
         var movementStatsPool = EcsStart.World.GetPool<MovementStatsComponent>();
         ref MovementStatsComponent movementStats = ref movementStatsPool.Get(senderEntity);

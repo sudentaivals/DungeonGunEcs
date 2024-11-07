@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 1762499536908526349}
   - component: {fileID: -6538473252344111101}
   - component: {fileID: 99132288225249068}
+  - component: {fileID: -7824425401784851857}
   m_Layer: 11
   m_Name: SkeletonBullet
   m_TagString: Untagged
@@ -278,6 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _poolId: 201
+  _serializableGuid:
+    serializedGuid: 1eeb68c4-2eee-49d4-ab4e-1f26c6741605
 --- !u!114 &133778674156065180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,9 +349,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     GameObjectReference: {fileID: 2358134770491426566}
+    SerializableGuid:
+      serializedGuid: 1eeb68c4-2eee-49d4-ab4e-1f26c6741605
     Id: 201
     Name: Skeleton bullet
     Description: Plasma ball from skeleton.
+--- !u!114 &-7824425401784851857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2358134770491426566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9870048ce536a4895b218696acb39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    DamageModificators: []
+    ActionsOnDamageDeal: []
 --- !u!1 &4372564531596383074
 GameObject:
   m_ObjectHideFlags: 0

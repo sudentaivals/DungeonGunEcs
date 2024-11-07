@@ -6,7 +6,7 @@ using UnityEngine;
 public class AddColorAction : GameAction
 {
     [SerializeField] Color _color;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         if (takerEntity == null) return;
         var args = EventArgsObjectPool.GetArgs<AddColorEventArgs>();

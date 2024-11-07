@@ -14,9 +14,7 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
     private EcsPool<NpcIdComponent> _npcIdPool;
 
     private EcsPool<EventsComponent> _eventsComponentPool;
-
     private GameObject _poolParent;
-    private const int FLOATING_TEXT_POOL_ID = 99999;
 
     public void Destroy(IEcsSystems systems)
     {
@@ -45,12 +43,12 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
             action.Action(entity, null);
         }
         ref var npcIdComponent = ref _npcIdPool.Get(entity);
-        int poolId = npcIdComponent.Id;
+        Guid poolId = npcIdComponent.SerializableGuid.Guid;
         var container = GetContainer(poolId, poolHandlerComp.GameObjectReference);
         container.ReturnObjectToPool(poolHandlerComp.GameObjectReference);
     }
 
-    private ObjectPoolContainer GetContainer(int poolId, GameObject prefab)
+    private ObjectPoolContainer GetContainer(Guid poolId, GameObject prefab)
     {
         var container = _poolContainer.FirstOrDefault(a => a.PoolId == poolId);
         if(container == null)
@@ -65,10 +63,10 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
     {
         var takeObjectArgs = args as TakeObjectFromPoolEventArgs;
         if(takeObjectArgs.ObjectToSpawn == null) return;
-        int poolId = -1;
+        Guid poolId = Guid.Empty;
         if(takeObjectArgs.ObjectToSpawn.TryGetComponent<ObjectPoolHandler>(out var poolHandler))
         {
-            poolId = poolHandler.PoolId;
+            poolId = poolHandler.Guid;
         }
         else
         {
@@ -89,6 +87,7 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
             }
         }
 
+        //start events reseted, no matter what
         if(pooledObjectEntity != null)
         {
             if(_eventsComponentPool.Has(pooledObjectEntity.Value))
@@ -108,7 +107,7 @@ public class ObjectPoolSystem : IEcsInitSystem, IEcsDestroySystem
 
 public class ObjectPoolContainer
 {
-    private int _poolId;
+    private Guid _poolId;
 
     private List<GameObject> _disabledObjects;
 
@@ -116,9 +115,9 @@ public class ObjectPoolContainer
 
     private GameObject _prefab;
 
-    public int PoolId => _poolId;
+    public Guid PoolId => _poolId;
 
-    public ObjectPoolContainer(int poolId, GameObject prefab)
+    public ObjectPoolContainer(Guid poolId, GameObject prefab)
     {
         _disabledObjects = new();
         _activeObjects = new();
@@ -144,7 +143,8 @@ public class ObjectPoolContainer
 
             int entity = oldObject.GetComponent<ConvertToEntity>().TryGetEntity().Value;
             var world = EcsStart.World;
-            world.GetPool<PooledObjectTag>().Del(entity);
+            var pool = world.GetPool<PooledObjectTag>();
+            if(pool.Has(entity)) pool.Del(entity);
             oldObject.SetActive(true);
             return oldObject;
         }
@@ -152,12 +152,14 @@ public class ObjectPoolContainer
 
     public void ReturnObjectToPool(GameObject gameObj)
     {
+        if(_disabledObjects.Contains(gameObj)) return;
         _disabledObjects.Add(gameObj);
         _activeObjects.Remove(gameObj);
 
         int entity = gameObj.GetComponent<ConvertToEntity>().TryGetEntity().Value;
         var world = EcsStart.World;
-        world.GetPool<PooledObjectTag>().Add(entity);
+        var pool = world.GetPool<PooledObjectTag>();
+        if(!pool.Has(entity)) pool.Add(entity);
         gameObj.SetActive(false);
 
     }

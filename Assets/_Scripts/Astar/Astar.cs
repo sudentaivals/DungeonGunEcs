@@ -28,7 +28,7 @@ namespace CustomAstar
 
         public Stack<Node> FindPath(Node startNode, Node goalNode)
         {
-            GridManager.Instance.Reset();
+            GridManager.Instance.CurrentGrid.Reset();
             _openList.Clear();
 
             _openList.Enqueue(startNode, Octile8DirCost(startNode, goalNode));
@@ -42,7 +42,7 @@ namespace CustomAstar
                 }
                 node.IsClosed = true;
 
-                var neighbors = GridManager.Instance.GetNeighbors(node);
+                var neighbors = GridManager.Instance.CurrentGrid.GetNeighbors(node);
                 foreach (Node neighbourNode in neighbors)
                 {
                     if(neighbourNode.IsClosed) continue;
@@ -80,9 +80,10 @@ namespace CustomAstar
 
         public Stack<Node> FindPath(Vector3 startPos, Vector3 goalPos)
         {
-            var startNode = GridManager.Instance.GetNodeByCoordinates(startPos);
+            if(GridManager.Instance.CurrentGrid == null) return null;
+            var startNode = GridManager.Instance.CurrentGrid.GetNodeByCoordinates(startPos);
             if(startNode == null) return null;
-            var endNode = GridManager.Instance.GetNodeByCoordinates(goalPos);
+            var endNode = GridManager.Instance.CurrentGrid.GetNodeByCoordinates(goalPos);
             if(endNode == null || endNode.IsObstacle) return null;
             return FindPath(startNode, endNode);
         }

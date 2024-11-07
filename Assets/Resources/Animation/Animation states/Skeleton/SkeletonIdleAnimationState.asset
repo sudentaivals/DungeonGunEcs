@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: SkeletonIdleAnimationState
   m_EditorClassIdentifier: 
   _id: 5
+  _name: Idle
   _animation: {fileID: 7400000, guid: 478191b1148ad7a43bb5d7b3baad8aab, type: 2}
   _animationStartCondition: {fileID: 0}
+  _actionOnAnimationExit: {fileID: 0}
   _actionOnAnimationEnd: {fileID: 0}
   _actionOnAnimationStart: {fileID: 0}
   _priority: 100

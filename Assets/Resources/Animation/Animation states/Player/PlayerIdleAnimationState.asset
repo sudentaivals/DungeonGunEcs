@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: PlayerIdleAnimationState
   m_EditorClassIdentifier: 
   _id: 1
+  _name: PlayerIdle
   _animation: {fileID: 7400000, guid: d2ceb1fb634160e40b69cf7a76d751d4, type: 2}
   _animationStartCondition: {fileID: 0}
+  _actionOnAnimationExit: {fileID: 0}
   _actionOnAnimationEnd: {fileID: 0}
   _actionOnAnimationStart: {fileID: 0}
   _priority: 100

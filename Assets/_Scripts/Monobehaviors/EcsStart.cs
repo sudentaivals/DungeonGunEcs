@@ -26,6 +26,10 @@ public class EcsStart : MonoBehaviour
             .Add(new NpcMovementSystem())
             .Add(new GlobalStatsSystem())
             .Add(new SoundSystem())
+            .Add(new PhysicsSystem())
+            .Add(new DungeonDoorSystem())
+            .Add(new HealthSystem())
+            .Add(new DealDamageSystem())
             #endregion
             .Add(new MouseFollowSystem())
             .Add(new ObjectPoolSystem())
@@ -65,7 +69,6 @@ public class EcsStart : MonoBehaviour
             //.Add(new SummonedObjectSystem())
             .Add(new ProjectileStartupSystem())
             .Add(new BulletPathSystem())
-            .Add(new DealDamageSystem())
             .Add(new DestroyAndSpawnEntitiesSystem())
             .Init();
 #if UNITY_EDITOR

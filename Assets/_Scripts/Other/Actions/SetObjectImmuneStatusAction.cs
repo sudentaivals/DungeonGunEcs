@@ -4,7 +4,7 @@ public class SetObjectImmuneStatusAction : GameAction
 {
     [SerializeField] bool _setImmune;
     [SerializeField] bool _isSender;
-    public override void Action(int senderEntity, int? takerEntity)
+    public override void Action(int senderEntity, int? takerEntity, ConditionAndActionArgs conditionAndActionArgs = null)
     {
         int entity = -1;
         if(_isSender) entity = senderEntity;
