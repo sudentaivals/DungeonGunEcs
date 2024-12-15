@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Priority_Queue;
 using UnityEngine;
 
@@ -11,6 +10,8 @@ namespace CustomAstar
 
         private readonly int CARDINAL_COST = 70;
         private readonly int DIAGONAL_COST = 99;
+
+        private readonly int ADDITIONAL_COST = 35;
 
         private int _gCost;
         private int Octile8DirCost(Node currentNode, Node goalNode)
@@ -55,7 +56,7 @@ namespace CustomAstar
                     _gCost = node.G + Octile8DirCost(node, neighbourNode);
                     if(!_openList.Contains(neighbourNode))
                     {
-                        int addition = neighbourNode.IsNearObstacle ? 70 : 0;
+                        int addition = neighbourNode.IsNearObstacle ? ADDITIONAL_COST : 0;
                         neighbourNode.G = _gCost + addition;
                         neighbourNode.H = Octile8DirCost(neighbourNode, node);
                         neighbourNode.Parent = node;
@@ -67,6 +68,7 @@ namespace CustomAstar
                         neighbourNode.G = _gCost;
                         neighbourNode.F = neighbourNode.G + neighbourNode.H;
                         neighbourNode.Parent = node;
+                        _openList.UpdatePriority(neighbourNode, neighbourNode.F);
                     } 
                 }
             }
